@@ -24,7 +24,7 @@ pipeline {
 		stage('Checkout') {
 			steps{
 				echo "------------>Checkout<------------"
-				checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Git_Centos', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_naranjo.hjs', url: 'https://github.com/naranjo-hjs/ceibaParking.git']]])
+				checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Git_Centos', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_danilo2693.hjs', url: 'https://github.com/danilo2693/Estacionamiento.git']]])
 				sh 'gradle clean'
 			}
 		}
