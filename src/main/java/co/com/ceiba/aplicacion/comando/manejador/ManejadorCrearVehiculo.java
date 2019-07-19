@@ -10,7 +10,6 @@ public class ManejadorCrearVehiculo {
 	private final FabricaVehiculo fabricaVehiculo;
 	
 	public ManejadorCrearVehiculo(ServicioCrearVehiculo servicioCrearVehiculo, FabricaVehiculo fabricaVehiculo) {
-		super();
 		this.servicioCrearVehiculo = servicioCrearVehiculo;
 		this.fabricaVehiculo = fabricaVehiculo;
 	}
