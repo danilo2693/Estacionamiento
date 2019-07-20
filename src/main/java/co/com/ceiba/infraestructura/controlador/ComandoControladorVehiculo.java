@@ -1,5 +1,6 @@
 package co.com.ceiba.infraestructura.controlador;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,14 +12,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/estacionamiento")
 @Api(tags = {"Controlador de vehiculo"})
 public class ComandoControladorVehiculo {
 
 	private final ManejadorCrearVehiculo manejadorCrearVehiculo;
 
+	@Autowired
 	public ComandoControladorVehiculo(ManejadorCrearVehiculo manejadorCrearVehiculo) {
-		super();
 		this.manejadorCrearVehiculo = manejadorCrearVehiculo;
 	}
 	
