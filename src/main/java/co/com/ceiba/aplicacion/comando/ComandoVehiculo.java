@@ -2,14 +2,14 @@ package co.com.ceiba.aplicacion.comando;
 
 public class ComandoVehiculo {
 	private String placa;
-	private String tipoId;
+	private long tipoId;
 	private String tipo;
 	private int cilindraje;
 	
 	
 	public ComandoVehiculo(){}
 	
-	public ComandoVehiculo(String placa, String tipoId, String tipo, int cilindraje) {
+	public ComandoVehiculo(String placa, long tipoId, String tipo, int cilindraje) {
 		this.placa = placa;
 		this.tipoId = tipoId;
 		this.tipo = tipo;
@@ -18,7 +18,7 @@ public class ComandoVehiculo {
 	public String getPlaca() {
 		return placa;
 	}
-	public String getTipoId() {
+	public long getTipoId() {
 		return tipoId;
 	}
 	public String getTipo() {

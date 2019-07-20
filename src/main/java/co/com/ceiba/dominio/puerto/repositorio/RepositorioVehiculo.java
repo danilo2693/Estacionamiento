@@ -8,10 +8,10 @@ public interface RepositorioVehiculo {
 	 * Permite crear los vehiculos
 	 * @param vehiculo
 	 */
-	void crear(Vehiculo vehiculo);
+	public Vehiculo crear(Vehiculo vehiculo);
 	
 	/**
-	 * Permite determinar si previamente se registro el vehiculop
+	 * Permite determinar si previamente se registro el vehiculo
 	 * @param vehiculo
 	 * @return si existe o no
 	 */

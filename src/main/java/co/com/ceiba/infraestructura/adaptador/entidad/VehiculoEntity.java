@@ -18,7 +18,7 @@ public class VehiculoEntity {
 	String placa;
 	
 	@Column(name = "tipoId")
-	String tipoId;
+	long tipoId;
 	
 	@Column(name = "tipo")
 	String tipo;
@@ -28,7 +28,7 @@ public class VehiculoEntity {
 	
 	public VehiculoEntity() {}
 
-	public VehiculoEntity(Integer id, String placa, String tipoId, String tipo, int cilindraje) {
+	public VehiculoEntity(Integer id, String placa, long tipoId, String tipo, int cilindraje) {
 		super();
 		this.id = id;
 		this.placa = placa;
@@ -45,7 +45,7 @@ public class VehiculoEntity {
 		return placa;
 	}
 
-	public String getTipoId() {
+	public long getTipoId() {
 		return tipoId;
 	}
 
