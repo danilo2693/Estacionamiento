@@ -15,12 +15,14 @@ public class ServicioCrearVehiculo {
 	}
 	
 	public void ejecutar(Vehiculo vehiculo) {
+		System.err.println("Dominio ServicioCrearVehiculo");
 		validarExistenciaPrevia(vehiculo);
 		this.repositorioVehiculo.crear(vehiculo);
 	}
 
 	private void validarExistenciaPrevia(Vehiculo vehiculo) {
-		boolean existe = this.repositorioVehiculo.existe(vehiculo);
+		boolean existe = this.repositorioVehiculo.existe(vehiculo.getPlaca(), vehiculo.getTipoId());
+		System.out.println("¿Existe?: "+ existe);
 		if(existe) {
 			throw new ExcepcionDuplicidad(EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA);
 		}

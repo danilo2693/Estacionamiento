@@ -15,6 +15,7 @@ public class ManejadorCrearVehiculo {
 	}
 	
 	public void ejecutar(ComandoVehiculo comandoVehiculo) {
+		System.err.println("Aplicacion Comando ManejadorCrearVehiculo ejecutar");
 		Vehiculo vehiculo = this.fabricaVehiculo.crear(comandoVehiculo);
 		this.servicioCrearVehiculo.ejecutar(vehiculo);
 	}

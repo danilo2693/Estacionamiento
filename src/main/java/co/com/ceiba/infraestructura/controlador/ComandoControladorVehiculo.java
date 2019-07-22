@@ -28,4 +28,6 @@ public class ComandoControladorVehiculo {
 	public void crear(@RequestBody ComandoVehiculo comandoVehiculo) {
 		this.manejadorCrearVehiculo.ejecutar(comandoVehiculo);
 	}
+	
+	
 }

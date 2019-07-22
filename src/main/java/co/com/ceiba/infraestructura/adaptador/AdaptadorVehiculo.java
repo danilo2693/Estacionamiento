@@ -26,8 +26,8 @@ public class AdaptadorVehiculo implements RepositorioVehiculo {
 	}
 
 	@Override
-	public boolean existe(Vehiculo vehiculo) {
-		return false;
+	public boolean existe(String placa, long tipoId) {
+		return this.repositorioVehiculo.existe(placa, tipoId);
 	}
 	
 }

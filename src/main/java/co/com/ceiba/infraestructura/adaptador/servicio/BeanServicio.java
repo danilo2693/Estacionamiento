@@ -14,11 +14,14 @@ public class BeanServicio {
 	
 	@Bean
     public ManejadorCrearVehiculo crearVehiculo(ServicioCrearVehiculo servicioCrearVehiculo, FabricaVehiculo fabricaVehiculo) {
+		System.err.println(" Infraestructura BeanServicioManejadorCrearVehiculo");
         return new ManejadorCrearVehiculo(servicioCrearVehiculo, fabricaVehiculo);
     }
 	
 	@Bean
 	public ServicioCrearVehiculo servicioCrearVehiculo(RepositorioVehiculo repositorioVehiculo) {
+		System.err.println("Infraestructura BeanServicioServicioCrearVehiculo");
 		return new ServicioCrearVehiculo(repositorioVehiculo);
 	}
+	
 }

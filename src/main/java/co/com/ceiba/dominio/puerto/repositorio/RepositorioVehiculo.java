@@ -15,5 +15,5 @@ public interface RepositorioVehiculo {
 	 * @param vehiculo
 	 * @return si existe o no
 	 */
-	boolean existe(Vehiculo vehiculo);
+	boolean existe(String placa, long tipoId);
 }
