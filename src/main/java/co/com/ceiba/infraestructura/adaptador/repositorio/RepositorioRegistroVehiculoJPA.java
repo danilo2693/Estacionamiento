@@ -11,7 +11,7 @@ public interface RepositorioRegistroVehiculoJPA extends CrudRepository<RegistroV
     @Query("SELECT CASE WHEN COUNT(p.id) > 0 THEN true ELSE false END FROM VehiculoEntity p WHERE p.placa = :placa AND p.tipoId = :tipoId")
     public boolean existe(@Param("placa") String placa, @Param("tipoId") long tipoId);
     
-    @Query("SELECT CASE WHEN COUNT(p.id) > :cantidad THEN false ELSE true END FROM VehiculoEntity p WHERE p.tipo = :tipo")
-    public boolean validarCuposPorTipoVehiculo(@Param("tipo") String tipo, @Param("cantidad") long cantidad);
+    @Query("SELECT COUNT(rv.id) FROM RegistroVehiculoEntity rv inner join rv.vehiculo v WHERE v.tipo = :tipo AND rv.salida is null")
+    public long validarCuposPorTipoVehiculo(@Param("tipo") String tipo);
 
 }

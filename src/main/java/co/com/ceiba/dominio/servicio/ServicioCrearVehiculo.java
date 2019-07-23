@@ -14,8 +14,8 @@ public class ServicioCrearVehiculo {
 	private static final String EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA = "El vehiculo ya existe en el sistema";
 	private static final String LO_SENTIMOS_NO_HAY_CUPOS = "Lo sentimos, no hay cupos en el estacionamiento";
 	private static final String ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA = "Lo sentimos, este vehiculo tiene restricción para entrar el día de hoy";
-	private static final int CANTIDAD_MAXIMA_CARROS = 20;
-	private static final int CANTIDAD_MAXIMA_MOTOS = 10;
+	private static final long CANTIDAD_MAXIMA_CARROS = 20;
+	private static final long CANTIDAD_MAXIMA_MOTOS = 10;
 	private static final String RESTRICCION_LETRA_PLACA = "A";
 	private static final String DIAS_ESPECIALES = "1,7";
 	private RepositorioVehiculo repositorioVehiculo;
@@ -39,9 +39,11 @@ public class ServicioCrearVehiculo {
 	}
 	
 	public void validarCupoEstacionamiento(Vehiculo vehiculo) {
-		int cantidad = (TiposVehiculoEnum.CARRO.ordinal() == vehiculo.getTipoId()) ? CANTIDAD_MAXIMA_CARROS : CANTIDAD_MAXIMA_MOTOS;
-		boolean cuposTipoVehiculo = this.repositorioVehiculo.validarCuposPorTipoVehiculo(vehiculo.getTipo(), cantidad);
-		if(!cuposTipoVehiculo) {
+		long carro = TiposVehiculoEnum.CARRO.ordinal();
+		long moto = TiposVehiculoEnum.MOTO.ordinal();
+		long cantidadTipoVehiculo = this.repositorioVehiculo.validarCuposPorTipoVehiculo(vehiculo.getTipo());
+		if((cantidadTipoVehiculo > CANTIDAD_MAXIMA_CARROS && carro == vehiculo.getTipoId()) 
+				|| (cantidadTipoVehiculo > CANTIDAD_MAXIMA_MOTOS && moto == vehiculo.getTipoId())) {
 			throw new ExcepcionCupos(LO_SENTIMOS_NO_HAY_CUPOS);
 		}
 	}

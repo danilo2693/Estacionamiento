@@ -31,8 +31,8 @@ public class AdaptadorVehiculo implements RepositorioVehiculo {
 	}
 	
 	@Override
-	public boolean validarCuposPorTipoVehiculo(String tipo, long cantidad) {
-		return this.repositorioVehiculo.validarCuposPorTipoVehiculo(tipo, cantidad);
+	public long validarCuposPorTipoVehiculo(String tipo) {
+		return this.repositorioVehiculo.validarCuposPorTipoVehiculo(tipo);
 	}
 	
 }
