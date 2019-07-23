@@ -8,7 +8,7 @@ import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 @Component
 public class FabricaVehiculo {
 	public Vehiculo crear(ComandoVehiculo comandoVehiculo) {
-		return new Vehiculo(comandoVehiculo.getPlaca(), comandoVehiculo.getTipoId(), 
-				comandoVehiculo.getTipo(), comandoVehiculo.getCilindraje());
+		return new Vehiculo(comandoVehiculo.getPlacaComando(), comandoVehiculo.getTipoIdComando(), 
+				comandoVehiculo.getTipoComando(), comandoVehiculo.getCilindrajeComando());
 	}
 }

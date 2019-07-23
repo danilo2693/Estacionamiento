@@ -9,9 +9,9 @@ import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 @Component
 public class FabricaRegistroVehiculo {
 	public RegistroVehiculo crear(ComandoRegistroVehiculo comandoRegistroVehiculo) {
-		return new RegistroVehiculo(new Vehiculo(comandoRegistroVehiculo.getVehiculo().getPlaca(),
-				comandoRegistroVehiculo.getVehiculo().getTipoId(), comandoRegistroVehiculo.getVehiculo().getTipo(),
-				comandoRegistroVehiculo.getVehiculo().getCilindraje()), comandoRegistroVehiculo.getEntrada(),
-				comandoRegistroVehiculo.getSalida(), comandoRegistroVehiculo.getTotal());
+		return new RegistroVehiculo(new Vehiculo(comandoRegistroVehiculo.getVehiculoComando().getPlacaComando(),
+				comandoRegistroVehiculo.getVehiculoComando().getTipoIdComando(), comandoRegistroVehiculo.getVehiculoComando().getTipoComando(),
+				comandoRegistroVehiculo.getVehiculoComando().getCilindrajeComando()), comandoRegistroVehiculo.getEntradaComando(),
+				comandoRegistroVehiculo.getSalidaComando(), comandoRegistroVehiculo.getTotalComando());
 	}
 }

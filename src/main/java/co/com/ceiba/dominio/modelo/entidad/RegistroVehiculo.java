@@ -7,7 +7,6 @@ public class RegistroVehiculo {
 	public static final String DEBE_REGISTRAR_UN_VEHICULO = "Debe registrar la placa de un vehiculo";
 	public static final String DEBE_REGISTRAR_UNA_FECHA_INGRESO = "Debe registrar el ingreso del vehiculo";
 	
-	private Integer id;
 	private Vehiculo vehiculo;
 	private Date entrada;
 	private Date salida;

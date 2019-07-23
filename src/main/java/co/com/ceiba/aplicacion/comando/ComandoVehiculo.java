@@ -1,32 +1,32 @@
 package co.com.ceiba.aplicacion.comando;
 
 public class ComandoVehiculo {
-	private String placa;
-	private long tipoId;
-	private String tipo;
-	private int cilindraje;
-	
-	
-	public ComandoVehiculo(){}
+	private String placaComando;
+	private long tipoIdComando;
+	private String tipoComando;
+	private int cilindrajeComando;
 	
 	public ComandoVehiculo(String placa, long tipoId, String tipo, int cilindraje) {
-		this.placa = placa;
-		this.tipoId = tipoId;
-		this.tipo = tipo;
-		this.cilindraje = cilindraje;
+		this.placaComando = placa;
+		this.tipoIdComando = tipoId;
+		this.tipoComando = tipo;
+		this.cilindrajeComando = cilindraje;
 	}
-	public String getPlaca() {
-		return placa;
+
+	public String getPlacaComando() {
+		return placaComando;
 	}
-	public long getTipoId() {
-		return tipoId;
+
+	public long getTipoIdComando() {
+		return tipoIdComando;
 	}
-	public String getTipo() {
-		return tipo;
+
+	public String getTipoComando() {
+		return tipoComando;
 	}
-	public int getCilindraje() {
-		return cilindraje;
+
+	public int getCilindrajeComando() {
+		return cilindrajeComando;
 	}
-	
 }
 

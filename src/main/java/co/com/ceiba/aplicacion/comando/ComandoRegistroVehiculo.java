@@ -3,38 +3,33 @@ package co.com.ceiba.aplicacion.comando;
 import java.util.Date;
 
 public class ComandoRegistroVehiculo {
-	private ComandoVehiculo vehiculo;
-	private Date entrada;
-	private Date salida;
-	private int total;
-	
-	public ComandoRegistroVehiculo(){}
+	private ComandoVehiculo vehiculoComando;
+	private Date entradaComando;
+	private Date salidaComando;
+	private int totalComando;
 
 	public ComandoRegistroVehiculo(ComandoVehiculo vehiculo, Date entrada, Date salida, int total) {
 		super();
-		this.vehiculo = vehiculo;
-		this.entrada = entrada;
-		this.salida = salida;
-		this.total = total;
-	}
-	
-	public ComandoVehiculo getVehiculo() {
-		return vehiculo;
+		this.vehiculoComando = vehiculo;
+		this.entradaComando = entrada;
+		this.salidaComando = salida;
+		this.totalComando = total;
 	}
 
-	public Date getEntrada() {
-		return entrada;
+	public ComandoVehiculo getVehiculoComando() {
+		return vehiculoComando;
 	}
 
-	public Date getSalida() {
-		return salida;
+	public Date getEntradaComando() {
+		return entradaComando;
 	}
 
-	public int getTotal() {
-		return total;
+	public Date getSalidaComando() {
+		return salidaComando;
 	}
-	
-	
-	
+
+	public int getTotalComando() {
+		return totalComando;
+	}
 }
 

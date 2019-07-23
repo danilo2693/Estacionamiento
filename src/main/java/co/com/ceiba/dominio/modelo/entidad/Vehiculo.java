@@ -8,7 +8,6 @@ public class Vehiculo {
 	public static final String EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO = "El tipo de vehiculo es un dato obligatorio.";
 	public static final String EL_CILINDRAJE_EN_MOTO_ES_UN_DATO_OBLIGATORIO = "El cilindraje en una moto es un dato obligatorio.";
 	
-	private Integer id;
 	private String placa;
 	private long tipoId;
 	private String tipo;
