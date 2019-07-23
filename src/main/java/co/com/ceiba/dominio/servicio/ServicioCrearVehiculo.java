@@ -42,8 +42,8 @@ public class ServicioCrearVehiculo {
 		long carro = TiposVehiculoEnum.CARRO.ordinal();
 		long moto = TiposVehiculoEnum.MOTO.ordinal();
 		long cantidadTipoVehiculo = this.repositorioVehiculo.validarCuposPorTipoVehiculo(vehiculo.getTipo());
-		if((cantidadTipoVehiculo > CANTIDAD_MAXIMA_CARROS && carro == vehiculo.getTipoId()) 
-				|| (cantidadTipoVehiculo > CANTIDAD_MAXIMA_MOTOS && moto == vehiculo.getTipoId())) {
+		if((cantidadTipoVehiculo > (CANTIDAD_MAXIMA_CARROS-1) && carro == vehiculo.getTipoId()) 
+				|| (cantidadTipoVehiculo > (CANTIDAD_MAXIMA_MOTOS-1) && moto == vehiculo.getTipoId())) {
 			throw new ExcepcionCupos(LO_SENTIMOS_NO_HAY_CUPOS);
 		}
 	}

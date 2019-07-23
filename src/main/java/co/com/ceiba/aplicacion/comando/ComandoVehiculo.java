@@ -5,12 +5,14 @@ public class ComandoVehiculo {
 	private long tipoIdComando;
 	private String tipoComando;
 	private int cilindrajeComando;
+
+	public ComandoVehiculo() {}
 	
-	public ComandoVehiculo(String placa, long tipoId, String tipo, int cilindraje) {
-		this.placaComando = placa;
-		this.tipoIdComando = tipoId;
-		this.tipoComando = tipo;
-		this.cilindrajeComando = cilindraje;
+	public ComandoVehiculo(String placaComando, long tipoIdComando, String tipoComando, int cilindrajeComando) {
+		this.placaComando = placaComando;
+		this.tipoIdComando = tipoIdComando;
+		this.tipoComando = tipoComando;
+		this.cilindrajeComando = cilindrajeComando;
 	}
 
 	public String getPlacaComando() {

@@ -3,7 +3,7 @@ package co.com.ceiba.dominio.modelo.entidad;
 public class Vehiculo {
 
 	public static final int TAMANO_MINIMO_PLACA = 3;
-	public static final String LA_PLACA_DEBE_TENER_MINIMO_LETRAS = "El nombre debe tener mÃ­nimo %s letras.";
+	public static final String LA_PLACA_DEBE_TENER_MINIMO_LETRAS = "La placa debe tener mínimo %s letras.";
 	public static final String LA_PLACA_ES_UN_DATO_OBLIGATORIO = "La placa es un dato obligatorio.";
 	public static final String EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO = "El tipo de vehiculo es un dato obligatorio.";
 	public static final String EL_CILINDRAJE_EN_MOTO_ES_UN_DATO_OBLIGATORIO = "El cilindraje en una moto es un dato obligatorio.";

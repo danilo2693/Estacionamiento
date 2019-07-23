@@ -8,12 +8,14 @@ public class ComandoRegistroVehiculo {
 	private Date salidaComando;
 	private int totalComando;
 
-	public ComandoRegistroVehiculo(ComandoVehiculo vehiculo, Date entrada, Date salida, int total) {
-		super();
-		this.vehiculoComando = vehiculo;
-		this.entradaComando = entrada;
-		this.salidaComando = salida;
-		this.totalComando = total;
+	public ComandoRegistroVehiculo() {}
+	
+	public ComandoRegistroVehiculo(ComandoVehiculo vehiculoComando, Date entradaComando, Date salidaComando,
+			int totalComando) {
+		this.vehiculoComando = vehiculoComando;
+		this.entradaComando = entradaComando;
+		this.salidaComando = salidaComando;
+		this.totalComando = totalComando;
 	}
 
 	public ComandoVehiculo getVehiculoComando() {
