@@ -2,8 +2,9 @@ package co.com.ceiba.dominio.modelo.unitaria;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
 import co.com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import co.com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
@@ -20,14 +21,11 @@ public class VehiculoTest {
 	private static final String TIPO = "MOTO";
 	private static final int CILINDRAJE = 200;
 
+	@Mock
 	private RepositorioVehiculo repositorioVehiculo;
+	@InjectMocks
 	private ServicioCrearVehiculo servicioCrearVehiculo;
 	
-	@Before
-	public void setup() {
-		servicioCrearVehiculo = new ServicioCrearVehiculo(repositorioVehiculo);
-	}
-
 	@Test()
 	public void crearVehiculoTest() {
 		//Arrange
