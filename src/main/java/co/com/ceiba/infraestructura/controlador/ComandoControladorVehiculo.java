@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.com.ceiba.aplicacion.comando.ComandoVehiculo;
-import co.com.ceiba.aplicacion.comando.manejador.ManejadorCrearVehiculo;
+import co.com.ceiba.aplicacion.comando.ComandoRegistroVehiculo;
+import co.com.ceiba.aplicacion.comando.manejador.ManejadorCrearRegistroVehiculo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -16,18 +16,17 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = {"Controlador de vehiculo"})
 public class ComandoControladorVehiculo {
 
-	private final ManejadorCrearVehiculo manejadorCrearVehiculo;
+	private final ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo;
 
 	@Autowired
-	public ComandoControladorVehiculo(ManejadorCrearVehiculo manejadorCrearVehiculo) {
-		this.manejadorCrearVehiculo = manejadorCrearVehiculo;
+	public ComandoControladorVehiculo(ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo) {
+		this.manejadorCrearRegistroVehiculo = manejadorCrearRegistroVehiculo;
 	}
 	
 	@PostMapping
 	@ApiOperation("crear")
-	public void crear(@RequestBody ComandoVehiculo comandoVehiculo) {
-		this.manejadorCrearVehiculo.ejecutar(comandoVehiculo);
+	public void crear(@RequestBody ComandoRegistroVehiculo comandoRegistroVehiculo) {
+		this.manejadorCrearRegistroVehiculo.ejecutar(comandoRegistroVehiculo);
 	}
-	
-	
+		
 }
