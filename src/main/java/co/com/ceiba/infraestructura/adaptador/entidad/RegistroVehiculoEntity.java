@@ -35,9 +35,7 @@ public class RegistroVehiculoEntity {
 	
 	public RegistroVehiculoEntity() {}
 	
-	public RegistroVehiculoEntity(Integer id, VehiculoEntity vehiculo, Date entrada, Date salida, double total) {
-		super();
-		this.id = id;
+	public RegistroVehiculoEntity(VehiculoEntity vehiculo, Date entrada, Date salida, double total) {
 		this.vehiculo = vehiculo;
 		this.entrada = entrada;
 		this.salida = salida;

@@ -24,22 +24,6 @@ public class Vehiculo {
 		this.tipo = tipo;
 		this.cilindraje = cilindraje;
 	}
-		
-	public Vehiculo(Integer id,String placa, long tipoId, String tipo, int cilindraje) {
-		ValidarArgumento.validarObligatorio(placa, LA_PLACA_ES_UN_DATO_OBLIGATORIO);
-		ValidarArgumento.validarObligatorio(tipoId, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
-		ValidarArgumento.validarObligatorio(tipo, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
-		ValidarArgumento.validarLongitud(placa, TAMANO_MINIMO_PLACA, String.format(LA_PLACA_DEBE_TENER_MINIMO_LETRAS,TAMANO_MINIMO_PLACA));
-		this.id = id;
-		this.placa = placa;
-		this.tipoId = tipoId;
-		this.tipo = tipo;
-		this.cilindraje = cilindraje;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
 
 	public String getPlaca() {
 		return placa;

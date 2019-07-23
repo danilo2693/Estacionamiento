@@ -13,29 +13,13 @@ public class RegistroVehiculo {
 	private Date salida;
 	private double total;
 
-	public RegistroVehiculo(Integer id, Vehiculo vehiculo, Date entrada, Date salida, double total) {
-		super();		
-		ValidarArgumento.validarObligatorio(vehiculo, DEBE_REGISTRAR_UN_VEHICULO);
-		ValidarArgumento.validarObligatorio(entrada, DEBE_REGISTRAR_UNA_FECHA_INGRESO);		
-		this.id = id;
-		this.vehiculo = vehiculo;
-		this.entrada = entrada;
-		this.salida = salida;
-		this.total = total;
-	}
-	
-	public RegistroVehiculo(Vehiculo vehiculo, Date entrada, Date salida, double total) {
-		super();		
+	public RegistroVehiculo(Vehiculo vehiculo, Date entrada, Date salida, double total) {		
 		ValidarArgumento.validarObligatorio(vehiculo, DEBE_REGISTRAR_UN_VEHICULO);
 		ValidarArgumento.validarObligatorio(entrada, DEBE_REGISTRAR_UNA_FECHA_INGRESO);		
 		this.vehiculo = vehiculo;
 		this.entrada = entrada;
 		this.salida = salida;
 		this.total = total;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public Vehiculo getVehiculo() {

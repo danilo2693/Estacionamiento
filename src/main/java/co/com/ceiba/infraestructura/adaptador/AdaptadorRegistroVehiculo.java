@@ -16,7 +16,6 @@ public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
 	private MapperVehiculo mapperVehiculo;
 	
 	public AdaptadorRegistroVehiculo(RepositorioRegistroVehiculoJPA repositorioRegistroVehiculo, MapperRegistroVehiculo mapperRegistroVehiculo, MapperVehiculo mapperVehiculo) {
-		super();
 		this.repositorioRegistroVehiculo = repositorioRegistroVehiculo;
 		this.mapperRegistroVehiculo = mapperRegistroVehiculo;
 		this.mapperVehiculo = mapperVehiculo;

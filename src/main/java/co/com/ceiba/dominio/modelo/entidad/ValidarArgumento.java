@@ -3,7 +3,7 @@ package co.com.ceiba.dominio.modelo.entidad;
 import co.com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import co.com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 
-public class ValidarArgumento {
+final class ValidarArgumento {
 
 	private ValidarArgumento() {}
 

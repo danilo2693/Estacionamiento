@@ -28,9 +28,7 @@ public class VehiculoEntity {
 	
 	public VehiculoEntity() {}
 
-	public VehiculoEntity(Integer id, String placa, long tipoId, String tipo, int cilindraje) {
-		super();
-		this.id = id;
+	public VehiculoEntity(String placa, long tipoId, String tipo, int cilindraje) {
 		this.placa = placa;
 		this.tipoId = tipoId;
 		this.tipo = tipo;
