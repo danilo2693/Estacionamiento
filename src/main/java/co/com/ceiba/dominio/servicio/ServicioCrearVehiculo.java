@@ -31,14 +31,14 @@ public class ServicioCrearVehiculo {
 		this.repositorioVehiculo.crear(vehiculo);
 	}
 
-	private void validarExistenciaPrevia(Vehiculo vehiculo) {
+	public void validarExistenciaPrevia(Vehiculo vehiculo) {
 		boolean existe = this.repositorioVehiculo.existe(vehiculo.getPlaca(), vehiculo.getTipoId());
 		if(existe) {
 			throw new ExcepcionDuplicidad(EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA);
 		}
 	}
 	
-	private void validarCupoEstacionamiento(Vehiculo vehiculo) {
+	public void validarCupoEstacionamiento(Vehiculo vehiculo) {
 		int cantidad = (TiposVehiculoEnum.CARRO.ordinal() == vehiculo.getTipoId()) ? CANTIDAD_MAXIMA_CARROS : CANTIDAD_MAXIMA_MOTOS;
 		boolean cuposTipoVehiculo = this.repositorioVehiculo.validarCuposPorTipoVehiculo(vehiculo.getTipo(), cantidad);
 		if(!cuposTipoVehiculo) {
@@ -46,7 +46,7 @@ public class ServicioCrearVehiculo {
 		}
 	}
 	
-	private void validarRestriccionEntrada(Vehiculo vehiculo){
+	public void validarRestriccionEntrada(Vehiculo vehiculo){
 		Calendar fechaHoy = Calendar.getInstance();
 		int diaHoy = fechaHoy.get(Calendar.DAY_OF_WEEK);
 		if((vehiculo.getPlaca().startsWith(RESTRICCION_LETRA_PLACA) || vehiculo.getPlaca().startsWith(RESTRICCION_LETRA_PLACA.toLowerCase())) && verificarDiasNoPermitidos(diaHoy)) {

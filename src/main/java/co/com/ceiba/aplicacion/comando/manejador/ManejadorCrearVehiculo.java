@@ -1,12 +1,8 @@
 package co.com.ceiba.aplicacion.comando.manejador;
 
-import co.com.ceiba.aplicacion.comando.ComandoRegistroVehiculo;
 import co.com.ceiba.aplicacion.comando.ComandoVehiculo;
-import co.com.ceiba.aplicacion.comando.fabrica.FabricaRegistroVehiculo;
 import co.com.ceiba.aplicacion.comando.fabrica.FabricaVehiculo;
-import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
-import co.com.ceiba.dominio.servicio.ServicioCrearRegistroVehiculo;
 import co.com.ceiba.dominio.servicio.ServicioCrearVehiculo;
 
 public class ManejadorCrearVehiculo {
@@ -19,7 +15,6 @@ public class ManejadorCrearVehiculo {
 	}
 	
 	public void ejecutar(ComandoVehiculo comandoVehiculo) {
-		System.err.println("Aplicacion Comando ManejadorCrearVehiculo ejecutar");
 		Vehiculo vehiculo = this.fabricaVehiculo.crear(comandoVehiculo);
 		this.servicioCrearVehiculo.ejecutar(vehiculo);
 	}

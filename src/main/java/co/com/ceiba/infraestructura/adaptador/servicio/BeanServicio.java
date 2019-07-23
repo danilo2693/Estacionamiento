@@ -17,27 +17,23 @@ public class BeanServicio {
 
 	@Bean
 	public ServicioCrearVehiculo servicioCrearVehiculo(RepositorioVehiculo repositorioVehiculo) {
-		System.err.println("Infraestructura BeanServicioServicioCrearVehiculo");
 		return new ServicioCrearVehiculo(repositorioVehiculo);
 	}
 	
 	@Bean
     public ManejadorCrearVehiculo manejadorCrearVehiculo(ServicioCrearVehiculo servicioCrearVehiculo, FabricaVehiculo fabricaVehiculo) {
-		System.err.println(" Infraestructura BeanServicioManejadorCrearVehiculo");
         return new ManejadorCrearVehiculo(servicioCrearVehiculo, fabricaVehiculo);
     }
 	
 	@Bean
-	public ServicioCrearRegistroVehiculo servicioCrearRegistroVehiculo(RepositorioRegistroVehiculo repositorioRegistroVehiculo) {
-		System.err.println("Infraestructura BeanServicioServicioCrearVehiculo");
-		return new ServicioCrearRegistroVehiculo(repositorioRegistroVehiculo);
+	public ServicioCrearRegistroVehiculo servicioCrearRegistroVehiculo(RepositorioRegistroVehiculo repositorioRegistroVehiculo, ServicioCrearVehiculo servicioCrearVehiculo) {
+		return new ServicioCrearRegistroVehiculo(repositorioRegistroVehiculo, servicioCrearVehiculo);
 	}
 	
 	@Bean
     public ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo(ServicioCrearRegistroVehiculo servicioCrearRegistroVehiculo,
-    		FabricaRegistroVehiculo fabricaRegistroVehiculo, ServicioCrearVehiculo servicioCrearVehiculo, FabricaVehiculo fabricaVehiculo) {
-		System.err.println(" Infraestructura BeanServicioManejadorCrearVehiculo");
-        return new ManejadorCrearRegistroVehiculo(servicioCrearRegistroVehiculo, fabricaRegistroVehiculo, servicioCrearVehiculo, fabricaVehiculo);
+    		FabricaRegistroVehiculo fabricaRegistroVehiculo) {
+        return new ManejadorCrearRegistroVehiculo(servicioCrearRegistroVehiculo, fabricaRegistroVehiculo);
     }
 	
 }

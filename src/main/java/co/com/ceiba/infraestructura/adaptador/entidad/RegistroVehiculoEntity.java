@@ -2,6 +2,7 @@ package co.com.ceiba.infraestructura.adaptador.entidad;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +20,7 @@ public class RegistroVehiculoEntity {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="vehiculo_id")
 	VehiculoEntity vehiculo;
 
