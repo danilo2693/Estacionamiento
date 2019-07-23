@@ -14,24 +14,11 @@ public class Vehiculo {
 	private String tipo;
 	private int cilindraje;
 	
-	public Vehiculo() {}
-	
-	public Vehiculo(Integer id, long tipoId,String tipo) {
-		ValidarArgumento.validarObligatorio(tipoId, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
-		ValidarArgumento.validarObligatorio(tipo, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
-		this.id = id;
-		this.tipoId = tipoId;
-		this.tipo = tipo;
-	}
-	
 	public Vehiculo(String placa, long tipoId, String tipo, int cilindraje) {
 		ValidarArgumento.validarObligatorio(placa, LA_PLACA_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipoId, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipo, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarLongitud(placa, TAMANO_MINIMO_PLACA, String.format(LA_PLACA_DEBE_TENER_MINIMO_LETRAS,TAMANO_MINIMO_PLACA));
-		if(tipoId == TiposVehiculoEnum.MOTO.ordinal()) {
-			ValidarArgumento.validarObligatorio(cilindraje, EL_CILINDRAJE_EN_MOTO_ES_UN_DATO_OBLIGATORIO);
-		}
 		this.placa = placa;
 		this.tipoId = tipoId;
 		this.tipo = tipo;
@@ -43,9 +30,6 @@ public class Vehiculo {
 		ValidarArgumento.validarObligatorio(tipoId, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipo, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarLongitud(placa, TAMANO_MINIMO_PLACA, String.format(LA_PLACA_DEBE_TENER_MINIMO_LETRAS,TAMANO_MINIMO_PLACA));
-		if(tipoId == TiposVehiculoEnum.MOTO.ordinal()) {
-			ValidarArgumento.validarObligatorio(cilindraje, EL_CILINDRAJE_EN_MOTO_ES_UN_DATO_OBLIGATORIO);
-		}
 		this.id = id;
 		this.placa = placa;
 		this.tipoId = tipoId;
@@ -61,7 +45,7 @@ public class Vehiculo {
 		return placa;
 	}
 	
-	public Long getTipoId() {
+	public long getTipoId() {
 		return tipoId;
 	}
 
@@ -73,8 +57,4 @@ public class Vehiculo {
 		return cilindraje;
 	}
 
-	public void setCilindraje(int cilindraje) {
-		this.cilindraje = cilindraje;
-	}
-		
 }

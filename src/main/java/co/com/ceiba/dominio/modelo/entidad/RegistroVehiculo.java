@@ -12,8 +12,6 @@ public class RegistroVehiculo {
 	private Date entrada;
 	private Date salida;
 	private double total;
-	
-	public RegistroVehiculo() {}
 
 	public RegistroVehiculo(Integer id, Vehiculo vehiculo, Date entrada, Date salida, double total) {
 		super();		
