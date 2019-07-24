@@ -36,6 +36,13 @@ public class RegistroVehiculo {
 	public double getTotal() {
 		return total;
 	}
-	
+
+	public void setSalida(Date salida) {
+		this.salida = salida;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
 	
 }

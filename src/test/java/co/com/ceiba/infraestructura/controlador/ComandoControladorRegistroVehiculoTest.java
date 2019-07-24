@@ -30,4 +30,12 @@ public class ComandoControladorRegistroVehiculoTest {
 				.content(JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
+	
+	@Test
+	public void testActualizar() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.put("/estacionamiento")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
 }

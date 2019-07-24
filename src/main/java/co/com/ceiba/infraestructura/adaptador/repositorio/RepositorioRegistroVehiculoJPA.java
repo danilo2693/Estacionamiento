@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
+import co.com.ceiba.infraestructura.adaptador.entidad.VehiculoEntity;
 
 public interface RepositorioRegistroVehiculoJPA extends CrudRepository<RegistroVehiculoEntity, Integer>{
 
@@ -14,4 +15,7 @@ public interface RepositorioRegistroVehiculoJPA extends CrudRepository<RegistroV
     @Query("SELECT COUNT(rv.id) FROM RegistroVehiculoEntity rv inner join rv.vehiculo v WHERE v.tipo = :tipo AND rv.salida is null")
     public long validarCuposPorTipoVehiculo(@Param("tipo") String tipo);
 
+    @Query("SELECT rv FROM RegistroVehiculoEntity rv join rv.vehiculo v WHERE v.placa = :placa AND rv.salida is null AND rv.total = 0")
+    public RegistroVehiculoEntity obtenerRegistroVehiculoPorPlaca(@Param("placa") String placa);
+    
 }

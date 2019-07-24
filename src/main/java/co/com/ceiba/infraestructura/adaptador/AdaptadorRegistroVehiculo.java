@@ -26,9 +26,23 @@ public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
 		RegistroVehiculoEntity registroVehiculoEntity = repositorioRegistroVehiculo.save(mapperRegistroVehiculo.mapperDominioToEntity(registroVehiculo,mapperVehiculo));
 		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntity, mapperVehiculo);
 	}
+	
+	@Override
+	public RegistroVehiculo actualizar(RegistroVehiculo registroVehiculo) {
+		
+		RegistroVehiculoEntity registroVehiculoEntityUpdate = repositorioRegistroVehiculo.save(mapperRegistroVehiculo.mapperDominioToEntity(registroVehiculo,mapperVehiculo));
+		
+		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntityUpdate, mapperVehiculo);
+	}
+	
 	@Override
 	public boolean existe(String placa, long tipoId) {
 		return this.repositorioRegistroVehiculo.existe(placa, tipoId);
+	}
+	
+	@Override
+	public RegistroVehiculo obtenerRegistroVehiculoPorPlaca(String placa) {		
+		return mapperRegistroVehiculo.mapperEntityToDominio(this.repositorioRegistroVehiculo.obtenerRegistroVehiculoPorPlaca(placa),mapperVehiculo);
 	}
 	
 	@Override
