@@ -8,9 +8,11 @@ import org.mockito.Mock;
 
 import co.com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import co.com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioVehiculo;
-import co.com.ceiba.dominio.servicio.ServicioCrearVehiculo;
+import co.com.ceiba.dominio.servicio.ServicioCrearRegistroVehiculo;
+import co.com.ceiba.dominio.testdatabuilder.VehiculoRegistroTestDataBuilder;
 import co.com.ceiba.dominio.testdatabuilder.VehiculoTestDataBuilder;
 
 public class VehiculoTest {
@@ -24,7 +26,7 @@ public class VehiculoTest {
 	@Mock
 	private RepositorioVehiculo repositorioVehiculo;
 	@InjectMocks
-	private ServicioCrearVehiculo servicioCrearVehiculo;
+	private ServicioCrearRegistroVehiculo servicioCrearVehiculo;
 	
 	@Test()
 	public void crearVehiculoTest() {
@@ -47,30 +49,33 @@ public class VehiculoTest {
 	@Test(expected = ExcepcionValorObligatorio.class)
 	public void validarPlacaObligatoria() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(null);
+		Vehiculo vehiculo = new VehiculoTestDataBuilder().conPlaca(null).build();
+		VehiculoRegistroTestDataBuilder vehiculoRegistroTestDataBuilder = new VehiculoRegistroTestDataBuilder().conVehiculo(vehiculo);
 		
 		//Act	
-		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
-		servicioCrearVehiculo.ejecutar(vehiculo);
+		RegistroVehiculo registroVehiculo = vehiculoRegistroTestDataBuilder.build();
+		servicioCrearVehiculo.ejecutar(registroVehiculo);
 	}
 	
 	@Test(expected = ExcepcionLongitudValor.class)
 	public void validarPlacaCorta() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA_CORTA);
+		Vehiculo vehiculo = new VehiculoTestDataBuilder().conPlaca(PLACA_CORTA).build();
+		VehiculoRegistroTestDataBuilder vehiculoRegistroTestDataBuilder = new VehiculoRegistroTestDataBuilder().conVehiculo(vehiculo);
 		
 		//Act	
-		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
-		servicioCrearVehiculo.ejecutar(vehiculo);
+		RegistroVehiculo registroVehiculo = vehiculoRegistroTestDataBuilder.build();
+		servicioCrearVehiculo.ejecutar(registroVehiculo);
 	}
 	
 	@Test(expected = ExcepcionValorObligatorio.class)
 	public void validarTipoObligatorio() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conTipo(0, null);
+		Vehiculo vehiculo = new VehiculoTestDataBuilder().conTipo(0, null).build();
+		VehiculoRegistroTestDataBuilder vehiculoRegistroTestDataBuilder = new VehiculoRegistroTestDataBuilder().conVehiculo(vehiculo);
 		
 		//Act
-		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
-		servicioCrearVehiculo.ejecutar(vehiculo);
+		RegistroVehiculo registroVehiculo = vehiculoRegistroTestDataBuilder.build();
+		servicioCrearVehiculo.ejecutar(registroVehiculo);
 	}
 }

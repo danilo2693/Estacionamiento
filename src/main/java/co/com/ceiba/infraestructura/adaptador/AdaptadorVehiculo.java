@@ -24,15 +24,5 @@ public class AdaptadorVehiculo implements RepositorioVehiculo {
 		VehiculoEntity vehiculoEntity = repositorioVehiculo.save(mapperVehiculo.mapperDominioToEntity(vehiculo));
 		return mapperVehiculo.mapperEntityToDominio(vehiculoEntity);
 	}
-
-	@Override
-	public boolean existe(String placa, long tipoId) {
-		return this.repositorioVehiculo.existe(placa, tipoId);
-	}
-	
-	@Override
-	public long validarCuposPorTipoVehiculo(String tipo) {
-		return this.repositorioVehiculo.validarCuposPorTipoVehiculo(tipo);
-	}
 	
 }

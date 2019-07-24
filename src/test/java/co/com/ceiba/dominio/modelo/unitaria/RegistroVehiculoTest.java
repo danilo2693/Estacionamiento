@@ -13,9 +13,7 @@ import co.com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
-import co.com.ceiba.dominio.puerto.repositorio.RepositorioVehiculo;
 import co.com.ceiba.dominio.servicio.ServicioCrearRegistroVehiculo;
-import co.com.ceiba.dominio.servicio.ServicioCrearVehiculo;
 import co.com.ceiba.dominio.testdatabuilder.VehiculoRegistroTestDataBuilder;
 import co.com.ceiba.dominio.testdatabuilder.VehiculoTestDataBuilder;
 
@@ -27,13 +25,11 @@ public class RegistroVehiculoTest {
 	private static final double TOTAL = 10203;
 
 	private RepositorioRegistroVehiculo repositorioRegistroVehiculo;
-	private RepositorioVehiculo repositorioVehiculo;
 	private ServicioCrearRegistroVehiculo servicioCrearRegistroVehiculo;
 	
 	@Before
 	public void setup() {
-		ServicioCrearVehiculo servicioCrearVehiculo = new ServicioCrearVehiculo(repositorioVehiculo);
-		servicioCrearRegistroVehiculo = new ServicioCrearRegistroVehiculo(repositorioRegistroVehiculo, servicioCrearVehiculo);
+		servicioCrearRegistroVehiculo = new ServicioCrearRegistroVehiculo(repositorioRegistroVehiculo);
 	}
 
 	@Test()
