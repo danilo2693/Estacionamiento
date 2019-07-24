@@ -15,7 +15,7 @@ public class ServicioCrearRegistroVehiculo {
 	
 	public void ejecutar(RegistroVehiculo registroVehiculo) {
 		servicioCrearVehiculo.validarExistenciaPrevia(registroVehiculo.getVehiculo());
-		servicioCrearVehiculo.validarCupoEstacionamiento(registroVehiculo.getVehiculo());
+		servicioCrearVehiculo.validarCupoLlenoEstacionamiento(registroVehiculo.getVehiculo());
 		servicioCrearVehiculo.validarRestriccionEntrada(registroVehiculo.getVehiculo());
 		this.repositorioRegistroVehiculo.crear(registroVehiculo);
 	}
