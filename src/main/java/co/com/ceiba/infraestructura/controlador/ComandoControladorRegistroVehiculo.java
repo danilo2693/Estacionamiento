@@ -14,12 +14,12 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/estacionamiento")
 @Api(tags = {"Controlador de vehiculo"})
-public class ComandoControladorVehiculo {
+public class ComandoControladorRegistroVehiculo {
 
 	private final ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo;
 
 	@Autowired
-	public ComandoControladorVehiculo(ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo) {
+	public ComandoControladorRegistroVehiculo(ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo) {
 		this.manejadorCrearRegistroVehiculo = manejadorCrearRegistroVehiculo;
 	}
 	
