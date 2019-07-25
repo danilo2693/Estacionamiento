@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class VehiculoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(name = "placa")
 	String placa;
@@ -34,8 +34,8 @@ public class VehiculoEntity {
 		this.tipo = tipo;
 		this.cilindraje = cilindraje;
 	}
-
-	public Integer getId() {
+	
+	public int getId() {
 		return id;
 	}
 

@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/estacionamiento")
-@Api(tags = {"Controlador de vehiculo"})
+@Api(tags = {"Controlador de estacionamiento"})
 public class ComandoControladorRegistroVehiculo {
 
 	private final ManejadorCrearRegistroVehiculo manejadorCrearRegistroVehiculo;
@@ -35,8 +35,8 @@ public class ComandoControladorRegistroVehiculo {
 		this.manejadorCrearRegistroVehiculo.ejecutar(comandoRegistroVehiculo);
 	}
 	
-	@PutMapping
-	@ApiOperation("salir/{placa}")
+	@PutMapping("salir/{placa}")
+	@ApiOperation("retirar")
 	public boolean actualizar(@PathVariable("placa") String placa) {
 		return this.manejadorActualizarRegistroVehiculo.ejecutar(placa);
 	}

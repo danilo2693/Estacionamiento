@@ -4,6 +4,7 @@ import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 
 public class VehiculoTestDataBuilder {
 	
+	private int id;
 	private String placa;
 	private long tipoId;
 	private String tipo;
@@ -33,6 +34,6 @@ public class VehiculoTestDataBuilder {
 	}
 	
 	public Vehiculo build() {
-		return new Vehiculo(placa, tipoId, tipo, cilindraje);
+		return new Vehiculo(id, placa, tipoId, tipo, cilindraje);
 	}
 }

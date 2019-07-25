@@ -1,11 +1,13 @@
 package co.com.ceiba.dominio.servicio;
 
+import java.util.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import co.com.ceiba.dominio.excepcion.ExcepcionEstacionamiento;
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
-import net.bytebuddy.asm.Advice.Return;
 
 public class ServicioActualizarRegistroVehiculo {
 
@@ -33,7 +35,10 @@ public class ServicioActualizarRegistroVehiculo {
 	public void ejecutar(String placa) {
 		RegistroVehiculo registroVehiculo = validarExistenciaEnRegistroVehiculo(placa);
 		registroVehiculo.setSalida(Calendar.getInstance().getTime());
-		registroVehiculo.setTotal(calcularTotal(registroVehiculo));
+		registroVehiculo.setTotal(calcularTotal(registroVehiculo.getVehiculo().getCilindraje(),
+				registroVehiculo.getEntrada(),
+				registroVehiculo.getSalida(), 
+				registroVehiculo.getVehiculo().getTipoId()));
 		this.repositorioRegistroVehiculo.actualizar(registroVehiculo);
 	}
 	
@@ -45,36 +50,40 @@ public class ServicioActualizarRegistroVehiculo {
 		return registroVehiculo;
 	}
 	
-	public double calcularTotal(RegistroVehiculo registroVehiculo) {
-		double aumento = verificarAumentoPorCilindrajeMoto(registroVehiculo.getVehiculo().getCilindraje());
-		double diferenciaSegundos = ((registroVehiculo.getSalida().getTime() - registroVehiculo.getEntrada().getTime())/MILISEGUNDOS);
-		int dias = obtenerDias(diferenciaSegundos);
-		int horas = obtenerHoras(diferenciaSegundos- (dias*SEGUNDOS_EN_DIA));
+	public double calcularTotal(int cilindraje, Date entrada, Date salida, long tipo) {
+		double diferenciaSegundos = ((salida.getTime() - entrada.getTime())/MILISEGUNDOS);
+		List<Integer> diasYhoras = obtenerDiasYHoras(diferenciaSegundos);
 		double total = 0;
-		if(registroVehiculo.getVehiculo().getTipoId() == CARRO) {
-			total = calcularValorAPagar(dias, horas, VALOR_DIA_CARRO, VALOR_HORA_CARRO);
-			registroVehiculo.setTotal(total);
-		}else if(registroVehiculo.getVehiculo().getTipoId() == MOTO) {
-			total = calcularValorAPagar(dias, horas, VALOR_DIA_MOTO, VALOR_HORA_MOTO);
-			registroVehiculo.setTotal(total + aumento);
+		if(tipo == CARRO) {
+			total = calcularValorAPagar(diasYhoras.get(0), diasYhoras.get(1), VALOR_DIA_CARRO, VALOR_HORA_CARRO);
+		}else if(tipo == MOTO) {
+			double aumento = verificarAumentoPorCilindrajeMoto(cilindraje);
+			total = calcularValorAPagar(diasYhoras.get(0), diasYhoras.get(1), VALOR_DIA_MOTO, VALOR_HORA_MOTO);
+			total += aumento;
 		}
 		return total;
 	}
 	
-	public int obtenerDias(double diferenciaSegundos) {
-		int dias = 0;
-		if(diferenciaSegundos>=SEGUNDOS_EN_DIA) {
-            dias=(int)Math.floor(diferenciaSegundos/SEGUNDOS_EN_DIA);
-        }
-        return dias;
-	}
-	
-	public int obtenerHoras(double diferenciaSegundos) {
+	public List<Integer> obtenerDiasYHoras(double diferenciaSegundos) {
+		double totalHoras = diferenciaSegundos/SEGUNDOS_EN_HORA;
 		int horas = 0;
-		if(diferenciaSegundos>=SEGUNDOS_EN_HORA) {
-            horas=(int)Math.floor(diferenciaSegundos/SEGUNDOS_EN_HORA);
-        }
-		return horas;
+		int dias = 0;
+		List<Integer> resultado = new ArrayList<>();
+		while (totalHoras >= 0) {
+			if(totalHoras<=1) {
+				horas = 1;
+			}else if(totalHoras <= 9) {
+				horas = (int)Math.floor(totalHoras);
+			}else if((9 < totalHoras) && ( totalHoras<= 24)) {
+				dias++;
+			}else {
+				dias++;
+			}
+			totalHoras -= 24;
+		}
+		resultado.add(dias);
+		resultado.add(horas);
+		return resultado;
 	}
 	
 	public double calcularValorAPagar(int cantidadDias, int cantidadHoras,

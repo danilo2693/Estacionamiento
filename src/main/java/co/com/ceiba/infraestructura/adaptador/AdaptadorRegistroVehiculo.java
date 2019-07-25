@@ -4,35 +4,46 @@ import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
+import co.com.ceiba.infraestructura.adaptador.entidad.VehiculoEntity;
 import co.com.ceiba.infraestructura.adaptador.mapper.MapperRegistroVehiculo;
 import co.com.ceiba.infraestructura.adaptador.mapper.MapperVehiculo;
 import co.com.ceiba.infraestructura.adaptador.repositorio.RepositorioRegistroVehiculoJPA;
+import co.com.ceiba.infraestructura.adaptador.repositorio.RepositorioVehiculoJPA;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
 
 @Repository
 public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
 	private RepositorioRegistroVehiculoJPA repositorioRegistroVehiculo;
+	private RepositorioVehiculoJPA repositorioVehiculoJPA;
 	private MapperRegistroVehiculo mapperRegistroVehiculo;
 	private MapperVehiculo mapperVehiculo;
 	
-	public AdaptadorRegistroVehiculo(RepositorioRegistroVehiculoJPA repositorioRegistroVehiculo, MapperRegistroVehiculo mapperRegistroVehiculo, MapperVehiculo mapperVehiculo) {
+	public AdaptadorRegistroVehiculo(RepositorioRegistroVehiculoJPA repositorioRegistroVehiculo,
+			RepositorioVehiculoJPA repositorioVehiculoJPA,
+			MapperRegistroVehiculo mapperRegistroVehiculo,
+			MapperVehiculo mapperVehiculo) {
 		this.repositorioRegistroVehiculo = repositorioRegistroVehiculo;
+		this.repositorioVehiculoJPA = repositorioVehiculoJPA;
 		this.mapperRegistroVehiculo = mapperRegistroVehiculo;
 		this.mapperVehiculo = mapperVehiculo;
 	}
 	
 	@Override
 	public RegistroVehiculo crear(RegistroVehiculo registroVehiculo) {
-		RegistroVehiculoEntity registroVehiculoEntity = repositorioRegistroVehiculo.save(mapperRegistroVehiculo.mapperDominioToEntity(registroVehiculo,mapperVehiculo));
+		VehiculoEntity vehiculoEntity = repositorioVehiculoJPA.findById(registroVehiculo.getVehiculo().getId()).orElse(null);
+		RegistroVehiculoEntity registroVehiculoEntity = mapperRegistroVehiculo.mapperDominioToEntity(registroVehiculo,mapperVehiculo);
+		registroVehiculoEntity.setVehiculo(vehiculoEntity);
+		repositorioRegistroVehiculo.save(registroVehiculoEntity);
 		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntity, mapperVehiculo);
 	}
 	
 	@Override
 	public RegistroVehiculo actualizar(RegistroVehiculo registroVehiculo) {
-		
-		RegistroVehiculoEntity registroVehiculoEntityUpdate = repositorioRegistroVehiculo.save(mapperRegistroVehiculo.mapperDominioToEntity(registroVehiculo,mapperVehiculo));
-		
-		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntityUpdate, mapperVehiculo);
+		RegistroVehiculoEntity registroVehiculoEntity = mapperRegistroVehiculo.mapperDominioToEntity(registroVehiculo,mapperVehiculo);
+		VehiculoEntity vehiculoEntity = repositorioVehiculoJPA.findById(registroVehiculo.getVehiculo().getId()).orElse(null);
+		registroVehiculoEntity.setVehiculo(vehiculoEntity);
+		repositorioRegistroVehiculo.save(registroVehiculoEntity);
+		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntity, mapperVehiculo);
 	}
 	
 	@Override
@@ -41,12 +52,13 @@ public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
 	}
 	
 	@Override
-	public RegistroVehiculo obtenerRegistroVehiculoPorPlaca(String placa) {		
-		return mapperRegistroVehiculo.mapperEntityToDominio(this.repositorioRegistroVehiculo.obtenerRegistroVehiculoPorPlaca(placa),mapperVehiculo);
+	public RegistroVehiculo obtenerRegistroVehiculoPorPlaca(String placa) {	
+		RegistroVehiculoEntity registroVehiculoEntity = this.repositorioRegistroVehiculo.obtenerRegistroVehiculoPorPlaca(placa);
+		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntity, mapperVehiculo);
 	}
 	
 	@Override
-	public long validarCuposPorTipoVehiculo(String tipo) {
+	public int validarCuposPorTipoVehiculo(String tipo) {
 		return this.repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(tipo);
 	}
 	

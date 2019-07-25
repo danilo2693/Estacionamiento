@@ -9,4 +9,12 @@ public interface RepositorioVehiculo {
 	 * @param vehiculo
 	 */
 	public Vehiculo crear(Vehiculo vehiculo);
+	
+	/**
+	 * Permite determinar si previamente se registro el vehiculo
+	 * @param vehiculo
+	 * @return si existe o no
+	 */
+	boolean existe(String placa, long tipoId);
+		
 }

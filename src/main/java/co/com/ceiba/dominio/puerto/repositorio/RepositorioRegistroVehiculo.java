@@ -35,6 +35,6 @@ public interface RepositorioRegistroVehiculo {
 	 * @param vehiculo
 	 * @return si hay cupo o no
 	 */
-	long validarCuposPorTipoVehiculo(String tipo);
+	int validarCuposPorTipoVehiculo(String tipo);
 	
 }

@@ -1,7 +1,9 @@
 package co.com.ceiba.dominio.servicio;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 import java.text.ParseException;
@@ -33,8 +35,8 @@ public class ServicioCrearRegistroVehiculoTest {
 	private static final long TIPO_CARRO_ID = 0;
 	private static final String TIPO_MOTO = "MOTO";
 	private static final String TIPO_CARRO = "CARRO";
-	private static final long MOTOS_PARQUEADAS_10 = 10;
-	private static final long CARROS_PARQUEADOS_20 = 21;
+	private static final int MOTOS_PARQUEADAS_10 = 10;
+	private static final int CARROS_PARQUEADOS_20 = 21;
 	private static final String FECHA_MARTES = "2019-07-23";
 	private static final String FECHA_DOMINGO = "2019-07-21";
 	private static final String FORMATO_FECHA = "yyyy-MM-dd";
@@ -62,16 +64,21 @@ public class ServicioCrearRegistroVehiculoTest {
 		this.servicioCrearRegistroVehiculo.ejecutar(registroVehiculo);
 	}
 	
-	@Test(expected = ExcepcionDuplicidad.class)
+	@Test
 	public void validarExistenciaPreviaTest() {
 		//Arrange		
 		Vehiculo vehiculo = new VehiculoTestDataBuilder().conPlaca(PLACA).build();
-		VehiculoRegistroTestDataBuilder vehiculoRegistroTestDataBuilder = new VehiculoRegistroTestDataBuilder().conVehiculo(vehiculo);
 		when(repositorioRegistroVehiculo.existe(PLACA, TIPO_MOTO_ID)).thenReturn(true);
 		
 		//Act	
-		RegistroVehiculo registroVehiculo = vehiculoRegistroTestDataBuilder.build();
-		this.servicioCrearRegistroVehiculo.ejecutar(registroVehiculo);
+		try {
+			this.servicioCrearRegistroVehiculo.validarExistenciaPrevia(vehiculo);
+			fail();
+		} catch (ExcepcionDuplicidad e) {
+			assertEquals(ServicioCrearRegistroVehiculo.EL_VEHICULO_YA_ESTA_ESTACIONADO, e.getMessage());
+		}
+		
+		
 	}
 	
 	@Test(expected = ExcepcionCupos.class)

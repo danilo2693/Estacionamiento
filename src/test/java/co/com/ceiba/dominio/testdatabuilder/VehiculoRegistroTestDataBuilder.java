@@ -7,6 +7,7 @@ import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 
 public class VehiculoRegistroTestDataBuilder {
 	
+	private int id;
 	private Vehiculo vehiculo;
 	private Date entrada;
 	private Date salida;
@@ -40,6 +41,6 @@ public class VehiculoRegistroTestDataBuilder {
 	}
 	
 	public RegistroVehiculo build() {
-		return new RegistroVehiculo(vehiculo, entrada, salida, total);
+		return new RegistroVehiculo(id, vehiculo, entrada, salida, total);
 	}
 }

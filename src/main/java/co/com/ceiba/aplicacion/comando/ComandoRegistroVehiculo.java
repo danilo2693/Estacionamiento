@@ -3,6 +3,7 @@ package co.com.ceiba.aplicacion.comando;
 import java.util.Date;
 
 public class ComandoRegistroVehiculo {
+	private int id;
 	private ComandoVehiculo vehiculoComando;
 	private Date entradaComando;
 	private Date salidaComando;
@@ -16,6 +17,10 @@ public class ComandoRegistroVehiculo {
 		this.entradaComando = entradaComando;
 		this.salidaComando = salidaComando;
 		this.totalComando = totalComando;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public ComandoVehiculo getVehiculoComando() {

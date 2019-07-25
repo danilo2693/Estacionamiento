@@ -8,20 +8,26 @@ public class Vehiculo {
 	public static final String EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO = "El tipo de vehiculo es un dato obligatorio.";
 	public static final String EL_CILINDRAJE_EN_MOTO_ES_UN_DATO_OBLIGATORIO = "El cilindraje en una moto es un dato obligatorio.";
 	
+	private int id;
 	private String placa;
 	private long tipoId;
 	private String tipo;
 	private int cilindraje;
 	
-	public Vehiculo(String placa, long tipoId, String tipo, int cilindraje) {
+	public Vehiculo(int id, String placa, long tipoId, String tipo, int cilindraje) {
 		ValidarArgumento.validarObligatorio(placa, LA_PLACA_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipoId, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipo, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarLongitud(placa, TAMANO_MINIMO_PLACA, String.format(LA_PLACA_DEBE_TENER_MINIMO_LETRAS,TAMANO_MINIMO_PLACA));
+		this.id = id;
 		this.placa = placa;
 		this.tipoId = tipoId;
 		this.tipo = tipo;
 		this.cilindraje = cilindraje;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getPlaca() {

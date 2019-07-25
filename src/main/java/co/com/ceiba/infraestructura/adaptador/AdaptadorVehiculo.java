@@ -14,7 +14,6 @@ public class AdaptadorVehiculo implements RepositorioVehiculo {
 	private MapperVehiculo mapperVehiculo;
 	
 	public AdaptadorVehiculo(RepositorioVehiculoJPA repositorioVehiculo, MapperVehiculo mapperVehiculo) {
-		super();
 		this.repositorioVehiculo = repositorioVehiculo;
 		this.mapperVehiculo = mapperVehiculo;
 	}
@@ -25,4 +24,8 @@ public class AdaptadorVehiculo implements RepositorioVehiculo {
 		return mapperVehiculo.mapperEntityToDominio(vehiculoEntity);
 	}
 	
+	@Override
+	public boolean existe(String placa, long tipoId) {
+		return this.repositorioVehiculo.existe(placa, tipoId);
+	}
 }

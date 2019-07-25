@@ -11,7 +11,7 @@ import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
 
 public class ServicioCrearRegistroVehiculo {
 
-	public static final String EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA = "El vehiculo ya existe en el sistema";
+	public static final String EL_VEHICULO_YA_ESTA_ESTACIONADO = "El vehiculo ya está en el estacionamiento";
 	public static final String LO_SENTIMOS_NO_HAY_CUPOS = "Lo sentimos, no hay cupos en el estacionamiento";
 	public static final String ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA = "Lo sentimos, este vehiculo tiene restricción para entrar el día de hoy";
 	private static final long CANTIDAD_MAXIMA_CARROS = 20;
@@ -36,7 +36,7 @@ public class ServicioCrearRegistroVehiculo {
 	public void validarExistenciaPrevia(Vehiculo vehiculo) {
 		boolean existe = this.repositorioRegistroVehiculo.existe(vehiculo.getPlaca(), vehiculo.getTipoId());
 		if(existe) {
-			throw new ExcepcionDuplicidad(EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA);
+			throw new ExcepcionDuplicidad(EL_VEHICULO_YA_ESTA_ESTACIONADO);
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class ServicioCrearRegistroVehiculo {
 	
 	public boolean sinCupoEstacionamiento(String tipo, long tipoId) {
 		boolean resultado = false;
-		long cantidadTipoVehiculo = this.repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(tipo);
+		int cantidadTipoVehiculo = this.repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(tipo);
 		if(tipoId == CARRO) {
 			resultado = cantidadTipoVehiculo >= CANTIDAD_MAXIMA_CARROS;
 		}else if(tipoId == MOTO) {

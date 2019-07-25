@@ -1,0 +1,28 @@
+package co.com.ceiba.dominio.servicio;
+
+import co.com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
+import co.com.ceiba.dominio.puerto.repositorio.RepositorioVehiculo;
+
+public class ServicioCrearVehiculo {
+
+	public static final String EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA = "El vehiculo ya existe en el sistema";
+	private RepositorioVehiculo repositorioVehiculo;
+	
+	public ServicioCrearVehiculo(RepositorioVehiculo repositorioVehiculo) {
+		this.repositorioVehiculo = repositorioVehiculo;
+	}
+	
+	public void ejecutar(Vehiculo vehiculo) {
+		validarExistenciaPrevia(vehiculo);
+		this.repositorioVehiculo.crear(vehiculo);
+	}
+
+	public void validarExistenciaPrevia(Vehiculo vehiculo) {
+		boolean existe = this.repositorioVehiculo.existe(vehiculo.getPlaca(), vehiculo.getTipoId());
+		if(existe) {
+			throw new ExcepcionDuplicidad(EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA);
+		}
+	}
+	
+}
