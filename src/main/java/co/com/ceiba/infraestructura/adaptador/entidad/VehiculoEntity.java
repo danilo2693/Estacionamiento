@@ -17,7 +17,7 @@ public class VehiculoEntity {
 	@Column(name = "placa")
 	String placa;
 	
-	@Column(name = "tipoId")
+	@Column(name = "tipo_id")
 	long tipoId;
 	
 	@Column(name = "tipo")
@@ -28,7 +28,8 @@ public class VehiculoEntity {
 	
 	public VehiculoEntity() {}
 
-	public VehiculoEntity(String placa, long tipoId, String tipo, int cilindraje) {
+	public VehiculoEntity(int id, String placa, long tipoId, String tipo, int cilindraje) {
+		this.id = id;
 		this.placa = placa;
 		this.tipoId = tipoId;
 		this.tipo = tipo;

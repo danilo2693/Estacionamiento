@@ -22,6 +22,7 @@ public class MapperVehiculo {
 	public VehiculoEntity mapperDominioToEntity(Vehiculo vehiculo) {
 		VehiculoEntity objeto;
 		objeto = (vehiculo == null) ? null : new VehiculoEntity(
+				vehiculo.getId(),
 				vehiculo.getPlaca(), 
 				vehiculo.getTipoId(),
 				vehiculo.getTipo(), 

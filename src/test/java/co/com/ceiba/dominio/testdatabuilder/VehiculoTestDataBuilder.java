@@ -17,6 +17,11 @@ public class VehiculoTestDataBuilder {
 		this.cilindraje = 200;
 	}
 	
+	public VehiculoTestDataBuilder conId(int id) {
+		this.id = id;
+		return this;
+	}
+	
 	public VehiculoTestDataBuilder conPlaca(String placa) {
 		this.placa = placa;
 		return this;
