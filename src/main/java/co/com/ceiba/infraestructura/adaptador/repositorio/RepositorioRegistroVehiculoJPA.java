@@ -1,5 +1,7 @@
 package co.com.ceiba.infraestructura.adaptador.repositorio;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -17,4 +19,6 @@ public interface RepositorioRegistroVehiculoJPA extends CrudRepository<RegistroV
     @Query("SELECT rv FROM RegistroVehiculoEntity rv join rv.vehiculo v WHERE v.placa = :placa AND rv.salida is null AND rv.total = 0")
     public RegistroVehiculoEntity obtenerRegistroVehiculoPorPlaca(@Param("placa") String placa);
     
+    @Query("SELECT rv FROM RegistroVehiculoEntity rv join rv.vehiculo v WHERE rv.salida is null AND rv.total = 0")
+    public List<RegistroVehiculoEntity> mostrar();
 }

@@ -49,4 +49,11 @@ public class ComandoControladoresTest {
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
+	@Test
+	public void mostrarRegistrosVehiculosTest() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.get("/estacionamiento/")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
 }

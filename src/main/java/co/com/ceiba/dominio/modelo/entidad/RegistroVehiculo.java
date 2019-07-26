@@ -50,9 +50,5 @@ public class RegistroVehiculo {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-
-	public void setVehiculo(Vehiculo vehiculo) {
-		this.vehiculo = vehiculo;
-	}
 	
 }

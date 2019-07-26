@@ -1,5 +1,7 @@
 package co.com.ceiba.infraestructura.adaptador;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
@@ -60,6 +62,11 @@ public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
 	@Override
 	public int validarCuposPorTipoVehiculo(String tipo) {
 		return this.repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(tipo);
+	}
+	
+	@Override
+	public List<RegistroVehiculo> mostrar() {
+		return mapperRegistroVehiculo.mapperEntityListToDominioList(this.repositorioRegistroVehiculo.mostrar(), mapperVehiculo);
 	}
 	
 }

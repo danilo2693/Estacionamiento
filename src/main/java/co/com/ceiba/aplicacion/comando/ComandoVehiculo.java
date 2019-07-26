@@ -7,15 +7,10 @@ public class ComandoVehiculo {
 	private String tipoComando;
 	private int cilindrajeComando;
 
-	public ComandoVehiculo() {}
-	
-	public ComandoVehiculo(String placaComando, long tipoIdComando, String tipoComando, int cilindrajeComando) {
-		this.placaComando = placaComando;
-		this.tipoIdComando = tipoIdComando;
-		this.tipoComando = tipoComando;
-		this.cilindrajeComando = cilindrajeComando;
+	public ComandoVehiculo() {
+		//los comandos llegan construidos a traves del controlador
 	}
-	
+		
 	public int getId() {
 		return id;
 	}

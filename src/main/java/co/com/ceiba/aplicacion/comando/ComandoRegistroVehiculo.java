@@ -9,14 +9,8 @@ public class ComandoRegistroVehiculo {
 	private Date salidaComando;
 	private int totalComando;
 
-	public ComandoRegistroVehiculo() {}
-	
-	public ComandoRegistroVehiculo(ComandoVehiculo vehiculoComando, Date entradaComando, Date salidaComando,
-			int totalComando) {
-		this.vehiculoComando = vehiculoComando;
-		this.entradaComando = entradaComando;
-		this.salidaComando = salidaComando;
-		this.totalComando = totalComando;
+	public ComandoRegistroVehiculo() {
+		//los comandos llegan construidos a traves del controlador
 	}
 	
 	public int getId() {

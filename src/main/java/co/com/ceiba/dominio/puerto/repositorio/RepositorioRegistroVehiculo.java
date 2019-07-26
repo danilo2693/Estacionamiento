@@ -1,5 +1,7 @@
 package co.com.ceiba.dominio.puerto.repositorio;
 
+import java.util.List;
+
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 
 public interface RepositorioRegistroVehiculo {
@@ -36,5 +38,12 @@ public interface RepositorioRegistroVehiculo {
 	 * @return si hay cupo o no
 	 */
 	int validarCuposPorTipoVehiculo(String tipo);
+	
+	/**
+	 * Permite determinar si hay para un tipo de vehiculo
+	 * @param vehiculo
+	 * @return si hay cupo o no
+	 */
+	 List<RegistroVehiculo> mostrar();
 	
 }

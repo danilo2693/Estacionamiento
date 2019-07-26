@@ -8,6 +8,7 @@ import co.com.ceiba.aplicacion.comando.fabrica.FabricaVehiculo;
 import co.com.ceiba.aplicacion.comando.manejador.ManejadorActualizarRegistroVehiculo;
 import co.com.ceiba.aplicacion.comando.manejador.ManejadorCrearRegistroVehiculo;
 import co.com.ceiba.aplicacion.comando.manejador.ManejadorCrearVehiculo;
+import co.com.ceiba.aplicacion.consulta.manejador.ManejadorMostrarRegistroVehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioVehiculo;
 import co.com.ceiba.dominio.servicio.ServicioActualizarRegistroVehiculo;
@@ -47,6 +48,11 @@ public class BeanServicio {
 	@Bean
     public ManejadorActualizarRegistroVehiculo manejadorActualizarRegistroVehiculo(ServicioActualizarRegistroVehiculo servicioActualizarRegistroVehiculo) {
         return new ManejadorActualizarRegistroVehiculo(servicioActualizarRegistroVehiculo);
+    }
+	
+	@Bean
+    public ManejadorMostrarRegistroVehiculo mostrarRegistroVehiculo(RepositorioRegistroVehiculo repositorioRegistroVehiculo) {
+        return new ManejadorMostrarRegistroVehiculo(repositorioRegistroVehiculo);
     }
 	
 }
