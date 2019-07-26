@@ -12,8 +12,8 @@ import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
 public class MapperRegistroVehiculo {
 	
 	public RegistroVehiculo mapperEntityToDominio(RegistroVehiculoEntity registroVehiculoEntity, MapperVehiculo mapperVehiculo) {
-		RegistroVehiculo objeto;
-		objeto = (registroVehiculoEntity == null) ? null :  new RegistroVehiculo(
+		RegistroVehiculo objeto = null;
+		objeto = new RegistroVehiculo(
 				registroVehiculoEntity.getId(), 
 				mapperVehiculo.mapperEntityToDominio(registroVehiculoEntity.getVehiculo()),
 				registroVehiculoEntity.getEntrada(),
@@ -23,8 +23,8 @@ public class MapperRegistroVehiculo {
 	}
 	
 	public RegistroVehiculoEntity mapperDominioToEntity(RegistroVehiculo registroVehiculo, MapperVehiculo mapperVehiculo) {
-		RegistroVehiculoEntity objeto;
-		objeto = (registroVehiculo == null) ? null : new RegistroVehiculoEntity(
+		RegistroVehiculoEntity objeto = null;
+		objeto = new RegistroVehiculoEntity(
 				registroVehiculo.getId(),
 				mapperVehiculo.mapperDominioToEntity(registroVehiculo.getVehiculo()) ,
 				registroVehiculo.getEntrada(), 

@@ -9,8 +9,8 @@ import co.com.ceiba.infraestructura.adaptador.entidad.VehiculoEntity;
 public class MapperVehiculo {
 	
 	public Vehiculo mapperEntityToDominio(VehiculoEntity vehiculoEntity) {
-		Vehiculo objeto;
-		objeto = (vehiculoEntity == null) ? null :  new Vehiculo(
+		Vehiculo objeto = null;
+		objeto =  new Vehiculo(
 				vehiculoEntity.getId(),
 				vehiculoEntity.getPlaca(), 
 				vehiculoEntity.getTipoId(),
@@ -20,8 +20,8 @@ public class MapperVehiculo {
 	}
 	
 	public VehiculoEntity mapperDominioToEntity(Vehiculo vehiculo) {
-		VehiculoEntity objeto;
-		objeto = (vehiculo == null) ? null : new VehiculoEntity(
+		VehiculoEntity objeto = null;
+		objeto = new VehiculoEntity(
 				vehiculo.getId(),
 				vehiculo.getPlaca(), 
 				vehiculo.getTipoId(),
