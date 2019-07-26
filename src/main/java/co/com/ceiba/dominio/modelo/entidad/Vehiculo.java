@@ -8,42 +8,42 @@ public class Vehiculo {
 	public static final String EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO = "El tipo de vehiculo es un dato obligatorio.";
 	public static final String EL_CILINDRAJE_EN_MOTO_ES_UN_DATO_OBLIGATORIO = "El cilindraje en una moto es un dato obligatorio.";
 	
-	private int id;
-	private String placa;
-	private long tipoId;
-	private String tipo;
-	private int cilindraje;
+	private int idV;
+	private String placaE;
+	private long tipoIdE;
+	private String tipoE;
+	private int cilindrajeE;
 	
 	public Vehiculo(int id, String placa, long tipoId, String tipo, int cilindraje) {
 		ValidarArgumento.validarObligatorio(placa, LA_PLACA_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipoId, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarObligatorio(tipo, EL_TIPO_VEHICULO_ES_UN_DATO_OBLIGATORIO);
 		ValidarArgumento.validarLongitud(placa, TAMANO_MINIMO_PLACA, String.format(LA_PLACA_DEBE_TENER_MINIMO_LETRAS,TAMANO_MINIMO_PLACA));
-		this.id = id;
-		this.placa = placa;
-		this.tipoId = tipoId;
-		this.tipo = tipo;
-		this.cilindraje = cilindraje;
+		this.idV = id;
+		this.placaE = placa;
+		this.tipoIdE = tipoId;
+		this.tipoE = tipo;
+		this.cilindrajeE = cilindraje;
 	}
 
 	public int getId() {
-		return id;
+		return idV;
 	}
 
 	public String getPlaca() {
-		return placa;
+		return placaE;
 	}
 	
 	public long getTipoId() {
-		return tipoId;
+		return tipoIdE;
 	}
 
 	public String getTipo() {
-		return tipo;
+		return tipoE;
 	}
 
 	public int getCilindraje() {
-		return cilindraje;
+		return cilindrajeE;
 	}
 
 }

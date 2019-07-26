@@ -12,48 +12,48 @@ import javax.persistence.Table;
 public class VehiculoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idE;
+	private int id;
 	
 	@Column(name = "placa")
-	String placaE;
+	String placa;
 	
 	@Column(name = "tipo_id")
-	long tipoIdE;
+	long tipoId;
 	
 	@Column(name = "tipo")
-	String tipoE;
+	String tipo;
 	
 	@Column(name = "cilindraje")
-	int cilindrajeE;
+	int cilindraje;
 	
 	public VehiculoEntity() {}
 
 	public VehiculoEntity(int id, String placa, long tipoId, String tipo, int cilindraje) {
-		this.idE = id;
-		this.placaE = placa;
-		this.tipoIdE = tipoId;
-		this.tipoE = tipo;
-		this.cilindrajeE = cilindraje;
+		this.id = id;
+		this.placa = placa;
+		this.tipoId = tipoId;
+		this.tipo = tipo;
+		this.cilindraje = cilindraje;
 	}
 	
 	public int getId() {
-		return idE;
+		return id;
 	}
 
 	public String getPlaca() {
-		return placaE;
+		return placa;
 	}
 
 	public long getTipoId() {
-		return tipoIdE;
+		return tipoId;
 	}
 
 	public String getTipo() {
-		return tipoE;
+		return tipo;
 	}
 
 	public int getCilindraje() {
-		return cilindrajeE;
+		return cilindraje;
 	}
 	
 }
