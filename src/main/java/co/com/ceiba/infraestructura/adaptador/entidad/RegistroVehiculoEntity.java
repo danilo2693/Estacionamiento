@@ -1,4 +1,4 @@
-package co.com.ceiba.infraestructura.adaptador.entidad;
+ package co.com.ceiba.infraestructura.adaptador.entidad;
 
 import java.util.Date;
 

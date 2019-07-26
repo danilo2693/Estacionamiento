@@ -10,7 +10,7 @@ import co.com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import co.com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioVehiculo;
-import co.com.ceiba.dominio.servicio.ServicioCrearRegistroVehiculo;
+import co.com.ceiba.dominio.servicio.ServicioCrearVehiculo;
 import co.com.ceiba.dominio.testdatabuilder.VehiculoTestDataBuilder;
 
 public class VehiculoTest {
@@ -24,7 +24,7 @@ public class VehiculoTest {
 	@Mock
 	private RepositorioVehiculo repositorioVehiculo;
 	@InjectMocks
-	private ServicioCrearRegistroVehiculo servicioCrearVehiculo;
+	private ServicioCrearVehiculo servicioCrearVehiculo;
 	
 	@Test()
 	public void crearVehiculoTest() {
