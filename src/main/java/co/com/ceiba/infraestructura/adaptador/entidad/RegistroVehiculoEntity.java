@@ -22,17 +22,17 @@ public class RegistroVehiculoEntity {
 	@Column(name = "tipoid")
 	int tipoid;
 	
-	@Column(name = "cilindraje")
-	int cilindraje;
+	@Column(name = "cilindrajee")
+	int cilindrajee;
 
-	@Column(name = "entrada")
-	Date entrada;
+	@Column(name = "entradae")
+	Date entradae;
 	
-	@Column(name = "salida")
-	Date salida;
+	@Column(name = "salidae")
+	Date salidae;
 	
-	@Column(name = "total")
-	double total;
+	@Column(name = "totale")
+	double totale;
 	
 	public RegistroVehiculoEntity() {}
 
@@ -41,10 +41,10 @@ public class RegistroVehiculoEntity {
 		this.id = id;
 		this.placa = placa;
 		this.tipoid = tipoId;
-		this.cilindraje = cilindraje;
-		this.entrada = entrada;
-		this.salida = salida;
-		this.total = total;
+		this.cilindrajee = cilindraje;
+		this.entradae = entrada;
+		this.salidae = salida;
+		this.totale = total;
 	}
 
 	public int getId() {
@@ -60,27 +60,27 @@ public class RegistroVehiculoEntity {
 	}
 
 	public int getCilindraje() {
-		return cilindraje;
+		return cilindrajee;
 	}
 
 	public Date getEntrada() {
-		return entrada;
+		return entradae;
 	}
 
 	public Date getSalida() {
-		return salida;
+		return salidae;
 	}
 
 	public double getTotal() {
-		return total;
+		return totale;
 	}
 
 	public void setSalida(Date salida) {
-		this.salida = salida;
+		this.salidae = salida;
 	}
 
 	public void setTotal(double total) {
-		this.total = total;
+		this.totale = total;
 	}
 	
 }

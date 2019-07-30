@@ -32,7 +32,7 @@ public class ServicioActualizarRegistroVehiculo {
 		this.repositorioRegistroVehiculo = repositorioRegistroVehiculo;
 	}
 	
-	public void ejecutar(String placa) {
+	public double ejecutar(String placa) {
 		RegistroVehiculo registroVehiculo = validarExistenciaEnRegistroVehiculo(placa);
 		registroVehiculo.setSalida(Calendar.getInstance().getTime());
 		registroVehiculo.setTotal(calcularTotal(registroVehiculo.getCilindraje(),
@@ -40,6 +40,7 @@ public class ServicioActualizarRegistroVehiculo {
 				registroVehiculo.getSalida(), 
 				registroVehiculo.getTipoId()));
 		this.repositorioRegistroVehiculo.actualizar(registroVehiculo);
+		return registroVehiculo.getTotal();
 	}
 	
 	public RegistroVehiculo validarExistenciaEnRegistroVehiculo(String placa) {

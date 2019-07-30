@@ -47,7 +47,7 @@ public class ComandoControladorRegistroVehiculo {
 	
 	@PutMapping("salir/{placa}")
 	@ApiOperation("retirar")
-	public boolean actualizar(@PathVariable("placa") String placa) {
+	public double actualizar(@PathVariable("placa") String placa) {
 		return this.manejadorActualizarRegistroVehiculo.ejecutar(placa);
 	}
 		

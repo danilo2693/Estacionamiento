@@ -4,11 +4,13 @@ package co.com.ceiba.infraestructura.adaptador;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
+import co.com.ceiba.dominio.excepcion.ExcepcionEstacionamiento;
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
 import co.com.ceiba.infraestructura.adaptador.mapper.MapperRegistroVehiculo;
 import co.com.ceiba.infraestructura.adaptador.repositorio.RepositorioRegistroVehiculoJPA;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
+import co.com.ceiba.dominio.servicio.ServicioActualizarRegistroVehiculo;
 
 @Repository
 public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
@@ -31,13 +33,10 @@ public class AdaptadorRegistroVehiculo implements RepositorioRegistroVehiculo {
 	@Override
 	public RegistroVehiculo actualizar(RegistroVehiculo registroVehiculo) {
 		RegistroVehiculoEntity registroVehiculoEntity2 = null;
-		registroVehiculoEntity2 = repositorioRegistroVehiculo.findById(registroVehiculo.getId()).orElse(null);
-		
-		if(registroVehiculoEntity2 != null) {
-			registroVehiculoEntity2.setSalida(registroVehiculo.getSalida());
-			registroVehiculoEntity2.setTotal(registroVehiculo.getTotal());
-			repositorioRegistroVehiculo.save(registroVehiculoEntity2);
-		}
+		registroVehiculoEntity2 = repositorioRegistroVehiculo.findById(registroVehiculo.getId()).orElseThrow(() -> new ExcepcionEstacionamiento(ServicioActualizarRegistroVehiculo.EL_VEHICULO_NO_ESTA_PARQUEADO));
+		registroVehiculoEntity2.setSalida(registroVehiculo.getSalida());
+		registroVehiculoEntity2.setTotal(registroVehiculo.getTotal());
+		repositorioRegistroVehiculo.save(registroVehiculoEntity2);
 		return mapperRegistroVehiculo.mapperEntityToDominio(registroVehiculoEntity2);
 	}
 	

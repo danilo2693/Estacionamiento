@@ -9,9 +9,8 @@ public class ManejadorActualizarRegistroVehiculo {
 		this.servicioActualizarRegistroVehiculo = servicioActualizarRegistroVehiculo;
 	}
 	
-	public boolean ejecutar(String placa) {
-		this.servicioActualizarRegistroVehiculo.ejecutar(placa);
-		return true;
+	public double ejecutar(String placa) {
+		return this.servicioActualizarRegistroVehiculo.ejecutar(placa);
 	}
 	
 }
