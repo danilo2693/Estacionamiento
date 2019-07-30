@@ -19,7 +19,7 @@ public class RegistroVehiculoEntity {
 	@Column(name = "placa")
 	String placa;
 	
-	@Column(name = "tipo_id")
+	@Column(name = "tipoid")
 	int tipoid;
 	
 	@Column(name = "cilindraje")
