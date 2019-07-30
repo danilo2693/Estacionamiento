@@ -22,19 +22,15 @@ import co.com.ceiba.dominio.excepcion.ExcepcionCupos;
 import co.com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import co.com.ceiba.dominio.excepcion.ExcepcionRestriccionPlaca;
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
-import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
-import co.com.ceiba.dominio.testdatabuilder.VehiculoRegistroTestDataBuilder;
-import co.com.ceiba.dominio.testdatabuilder.VehiculoTestDataBuilder;
+import co.com.ceiba.dominio.testdatabuilder.RegistroVehiculoTestDataBuilder;
 
 public class ServicioCrearRegistroVehiculoTest {
 	
 	private static final String PLACA = "ABC123";
 	private static final String PLACA_SIN_A_INICIAL = "BC123";
-	private static final long TIPO_MOTO_ID = 1;
-	private static final long TIPO_CARRO_ID = 0;
-	private static final String TIPO_MOTO = "MOTO";
-	private static final String TIPO_CARRO = "CARRO";
+	private static final int TIPO_MOTO_ID = 1;
+	private static final int TIPO_CARRO_ID = 0;
 	private static final int MOTOS_PARQUEADAS_10 = 10;
 	private static final int CARROS_PARQUEADOS_20 = 21;
 	private static final String FECHA_MARTES = "2019-07-23";
@@ -57,7 +53,7 @@ public class ServicioCrearRegistroVehiculoTest {
 	@Test
 	public void crearRegistroVehiculoTest() {
 		//Arrange		
-		VehiculoRegistroTestDataBuilder registroVehiculoTestDataBuilder = new VehiculoRegistroTestDataBuilder();
+		RegistroVehiculoTestDataBuilder registroVehiculoTestDataBuilder = new RegistroVehiculoTestDataBuilder();
 		
 		//Act	
 		RegistroVehiculo registroVehiculo = registroVehiculoTestDataBuilder.build();
@@ -67,12 +63,12 @@ public class ServicioCrearRegistroVehiculoTest {
 	@Test
 	public void validarExistenciaPreviaTest() {
 		//Arrange		
-		Vehiculo vehiculo = new VehiculoTestDataBuilder().conPlaca(PLACA).build();
+		RegistroVehiculo registroVehiculo = new RegistroVehiculoTestDataBuilder().conTipoId(TIPO_MOTO_ID).conPlaca(PLACA).build();
 		when(repositorioRegistroVehiculo.existe(PLACA, TIPO_MOTO_ID)).thenReturn(true);
 		
 		//Act	
 		try {
-			this.servicioCrearRegistroVehiculo.validarExistenciaPrevia(vehiculo);
+			this.servicioCrearRegistroVehiculo.validarExistenciaPrevia(registroVehiculo);
 			fail();
 		} catch (ExcepcionDuplicidad e) {
 			assertEquals(ServicioCrearRegistroVehiculo.EL_VEHICULO_YA_ESTA_ESTACIONADO, e.getMessage());
@@ -84,31 +80,31 @@ public class ServicioCrearRegistroVehiculoTest {
 	@Test(expected = ExcepcionCupos.class)
 	public void validarCupoMotoLlenoEstacionamientoTest() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipo(TIPO_MOTO_ID, TIPO_MOTO);
-		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_MOTO)).thenReturn(MOTOS_PARQUEADAS_10);
+		RegistroVehiculoTestDataBuilder registroVehiculoTestDataBuilder = new RegistroVehiculoTestDataBuilder().conPlaca(PLACA).conTipoId(TIPO_MOTO_ID);
+		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_MOTO_ID)).thenReturn(MOTOS_PARQUEADAS_10);
 		//Act	
-		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
-		this.servicioCrearRegistroVehiculo.validarCupoLlenoEstacionamiento(vehiculo);
+		RegistroVehiculo registroVehiculo = registroVehiculoTestDataBuilder.build();
+		this.servicioCrearRegistroVehiculo.validarCupoLlenoEstacionamiento(registroVehiculo);
 	}
 	
 	@Test(expected = ExcepcionCupos.class)
 	public void validarCupoCarroLlenoEstacionamientoTest() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipo(TIPO_CARRO_ID, TIPO_CARRO);
-		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_CARRO)).thenReturn(CARROS_PARQUEADOS_20);
+		RegistroVehiculoTestDataBuilder registroVehiculoTestDataBuilder = new RegistroVehiculoTestDataBuilder().conPlaca(PLACA).conTipoId(TIPO_CARRO_ID);
+		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_CARRO_ID)).thenReturn(CARROS_PARQUEADOS_20);
 		//Act	
-		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
-		this.servicioCrearRegistroVehiculo.validarCupoLlenoEstacionamiento(vehiculo);
+		RegistroVehiculo registroVehiculo = registroVehiculoTestDataBuilder.build();
+		this.servicioCrearRegistroVehiculo.validarCupoLlenoEstacionamiento(registroVehiculo);
 	}
 	
 	@Test
 	public void sinCupoMotoTest() {
 		//Arrange
 		boolean respuesta;
-		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_MOTO)).thenReturn(MOTOS_PARQUEADAS_10);
+		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_MOTO_ID)).thenReturn(MOTOS_PARQUEADAS_10);
 		
 		//Act	
-		respuesta = this.servicioCrearRegistroVehiculo.sinCupoEstacionamiento(TIPO_MOTO, TIPO_MOTO_ID);
+		respuesta = this.servicioCrearRegistroVehiculo.sinCupoEstacionamiento(TIPO_MOTO_ID);
 		
 		//Assert
 		assertTrue(respuesta);
@@ -118,10 +114,10 @@ public class ServicioCrearRegistroVehiculoTest {
 	public void sinCupoCarroTest() {
 		//Arrange
 		boolean respuesta;
-		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_CARRO)).thenReturn(CARROS_PARQUEADOS_20);
+		when(repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(TIPO_CARRO_ID)).thenReturn(CARROS_PARQUEADOS_20);
 		
 		//Act	
-		respuesta = this.servicioCrearRegistroVehiculo.sinCupoEstacionamiento(TIPO_CARRO, TIPO_CARRO_ID);
+		respuesta = this.servicioCrearRegistroVehiculo.sinCupoEstacionamiento(TIPO_CARRO_ID);
 		
 		//Assert
 		assertTrue(respuesta);
@@ -187,12 +183,12 @@ public class ServicioCrearRegistroVehiculoTest {
 	@Test(expected = ExcepcionRestriccionPlaca.class)
 	public void validarRestriccionEntradaTest(){
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA);
+		RegistroVehiculoTestDataBuilder registroVehiculoTestDataBuilder = new RegistroVehiculoTestDataBuilder().conPlaca(PLACA);
 		//Act
-		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
+		RegistroVehiculo registroVehiculo = registroVehiculoTestDataBuilder.build();
 		when(servicioCrearRegistroVehiculo.verificarDiasNoPermitidos(DIA_MIERCOLES)).thenReturn(true);
 		when(servicioCrearRegistroVehiculo.validarRestriccionLetraA(PLACA)).thenReturn(true);
 		//Act	
-		this.servicioCrearRegistroVehiculo.validarRestriccionEntrada(vehiculo);
+		this.servicioCrearRegistroVehiculo.validarRestriccionEntrada(registroVehiculo);
 	}
 }

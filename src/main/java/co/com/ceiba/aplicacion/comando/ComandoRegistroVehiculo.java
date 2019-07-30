@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class ComandoRegistroVehiculo {
 	private int id;
-	private ComandoVehiculo vehiculoComando;
+	private String placaComando;
+	private int tipoIdComando;
+	private int cilindrajeComando;
 	private Date entradaComando;
 	private Date salidaComando;
 	private int totalComando;
@@ -17,8 +19,16 @@ public class ComandoRegistroVehiculo {
 		return id;
 	}
 
-	public ComandoVehiculo getVehiculoComando() {
-		return vehiculoComando;
+	public String getPlacaComando() {
+		return placaComando;
+	}
+
+	public int getTipoIdComando() {
+		return tipoIdComando;
+	}
+
+	public int getCilindrajeComando() {
+		return cilindrajeComando;
 	}
 
 	public Date getEntradaComando() {

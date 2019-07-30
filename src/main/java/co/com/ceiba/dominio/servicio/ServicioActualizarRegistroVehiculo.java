@@ -35,10 +35,10 @@ public class ServicioActualizarRegistroVehiculo {
 	public void ejecutar(String placa) {
 		RegistroVehiculo registroVehiculo = validarExistenciaEnRegistroVehiculo(placa);
 		registroVehiculo.setSalida(Calendar.getInstance().getTime());
-		registroVehiculo.setTotal(calcularTotal(registroVehiculo.getVehiculo().getCilindraje(),
+		registroVehiculo.setTotal(calcularTotal(registroVehiculo.getCilindraje(),
 				registroVehiculo.getEntrada(),
 				registroVehiculo.getSalida(), 
-				registroVehiculo.getVehiculo().getTipoId()));
+				registroVehiculo.getTipoId()));
 		this.repositorioRegistroVehiculo.actualizar(registroVehiculo);
 	}
 	

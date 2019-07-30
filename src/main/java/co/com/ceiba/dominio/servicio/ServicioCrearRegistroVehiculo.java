@@ -6,7 +6,6 @@ import co.com.ceiba.dominio.excepcion.ExcepcionCupos;
 import co.com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import co.com.ceiba.dominio.excepcion.ExcepcionRestriccionPlaca;
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
-import co.com.ceiba.dominio.modelo.entidad.Vehiculo;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
 
 public class ServicioCrearRegistroVehiculo {
@@ -27,29 +26,29 @@ public class ServicioCrearRegistroVehiculo {
 	}
 	
 	public void ejecutar(RegistroVehiculo registroVehiculo) {
-		validarExistenciaPrevia(registroVehiculo.getVehiculo());
-		validarCupoLlenoEstacionamiento(registroVehiculo.getVehiculo());
-		validarRestriccionEntrada(registroVehiculo.getVehiculo());
+		validarExistenciaPrevia(registroVehiculo);
+		validarCupoLlenoEstacionamiento(registroVehiculo);
+		validarRestriccionEntrada(registroVehiculo);
 		this.repositorioRegistroVehiculo.crear(registroVehiculo);
 	}
 	
-	public void validarExistenciaPrevia(Vehiculo vehiculo) {
-		boolean existe = this.repositorioRegistroVehiculo.existe(vehiculo.getPlaca(), vehiculo.getTipoId());
+	public void validarExistenciaPrevia(RegistroVehiculo registroVehiculo) {
+		boolean existe = this.repositorioRegistroVehiculo.existe(registroVehiculo.getPlaca(), registroVehiculo.getTipoId());
 		if(existe) {
 			throw new ExcepcionDuplicidad(EL_VEHICULO_YA_ESTA_ESTACIONADO);
 		}
 	}
 	
-	public void validarCupoLlenoEstacionamiento(Vehiculo vehiculo) {
-		boolean sinCupo = sinCupoEstacionamiento(vehiculo.getTipo(), vehiculo.getTipoId());
+	public void validarCupoLlenoEstacionamiento(RegistroVehiculo registroVehiculo) {
+		boolean sinCupo = sinCupoEstacionamiento(registroVehiculo.getTipoId());
 		if(sinCupo) {
 			throw new ExcepcionCupos(LO_SENTIMOS_NO_HAY_CUPOS);
 		}
 	}
 	
-	public boolean sinCupoEstacionamiento(String tipo, long tipoId) {
+	public boolean sinCupoEstacionamiento(int tipoId) {
 		boolean resultado = false;
-		int cantidadTipoVehiculo = this.repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(tipo);
+		int cantidadTipoVehiculo = this.repositorioRegistroVehiculo.validarCuposPorTipoVehiculo(tipoId);
 		if(tipoId == CARRO) {
 			resultado = cantidadTipoVehiculo >= CANTIDAD_MAXIMA_CARROS;
 		}else if(tipoId == MOTO) {
@@ -58,10 +57,10 @@ public class ServicioCrearRegistroVehiculo {
 		return resultado;
 	}
 	
-	public void validarRestriccionEntrada(Vehiculo vehiculo){
+	public void validarRestriccionEntrada(RegistroVehiculo registroVehiculo){
 		Calendar fechaHoy = Calendar.getInstance();
 		int diaHoy = fechaHoy.get(Calendar.DAY_OF_WEEK);
-		boolean restriccion = validarRestriccionLetraA(vehiculo.getPlaca())
+		boolean restriccion = validarRestriccionLetraA(registroVehiculo.getPlaca())
 				&& verificarDiasNoPermitidos(diaHoy);
 		if(restriccion) {
 			throw new ExcepcionRestriccionPlaca(ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA);

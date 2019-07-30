@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,9 +16,14 @@ public class RegistroVehiculoEntity {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="vehiculo_id")
-	VehiculoEntity vehiculo;
+	@Column(name = "placa")
+	String placa;
+	
+	@Column(name = "tipo_id")
+	int tipo_id;
+	
+	@Column(name = "cilindraje")
+	int cilindraje;
 
 	@Column(name = "entrada")
 	Date entrada;
@@ -33,10 +35,13 @@ public class RegistroVehiculoEntity {
 	double total;
 	
 	public RegistroVehiculoEntity() {}
-	
-	public RegistroVehiculoEntity(int id, VehiculoEntity vehiculo, Date entrada, Date salida, double total) {
+
+	public RegistroVehiculoEntity(int id, String placa, int tipoId, int cilindraje, Date entrada, Date salida,
+			double total) {
 		this.id = id;
-		this.vehiculo = vehiculo;
+		this.placa = placa;
+		this.tipo_id = tipoId;
+		this.cilindraje = cilindraje;
 		this.entrada = entrada;
 		this.salida = salida;
 		this.total = total;
@@ -46,8 +51,16 @@ public class RegistroVehiculoEntity {
 		return id;
 	}
 
-	public VehiculoEntity getVehiculo() {
-		return vehiculo;
+	public String getPlaca() {
+		return placa;
+	}
+
+	public int getTipoId() {
+		return tipo_id;
+	}
+
+	public int getCilindraje() {
+		return cilindraje;
 	}
 
 	public Date getEntrada() {
@@ -62,8 +75,12 @@ public class RegistroVehiculoEntity {
 		return total;
 	}
 
-	public void setVehiculo(VehiculoEntity vehiculo) {
-		this.vehiculo = vehiculo;
+	public void setSalida(Date salida) {
+		this.salida = salida;
 	}
 
+	public void setTotal(double total) {
+		this.total = total;
+	}
+	
 }

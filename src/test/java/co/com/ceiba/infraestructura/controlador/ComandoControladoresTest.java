@@ -18,25 +18,16 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 public class ComandoControladoresTest {
 	public static final int CILINDRAJE_510 = 510;
 	public static final int ID = 1;
-	public static final String PLACA_EXISTENTE = "MLM98P";
+	public static final String PLACA_EXISTENTE = "XXJ65C";
 		
 	@Autowired
 	private  MockMvc mvc;
 	
-	private static final String JSON_VEHICULO = "{ \"cilindrajeComando\": 400, \"id\": 1, \"placaComando\": \"BBC10A\", \"tipoComando\": \"CARRO\", \"tipoIdComando\": 0}";
-	private static final String JSON_REGISTRO_VEHICULO = "{ \"entradaComando\": \"2019-07-25T21:05:09.423Z\", \"id\": 0, \"salidaComando\": null, \"totalComando\": 0, \"vehiculoComando\": { \"cilindrajeComando\": 510, \"id\": 1, \"placaComando\": \"XXJ65C\", \"tipoComando\": \"MOTO\", \"tipoIdComando\": 1}}";
-	
-	@Test
-	public void crearVehiculoTest() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.post("/vehiculos")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(JSON_VEHICULO))
-				.andExpect(MockMvcResultMatchers.status().isOk());
-	}
+	private static final String JSON_REGISTRO_VEHICULO = "{ \"cilindrajeComando\": 200, \"entradaComando\": \"2019-07-30T02:04:49.267Z\", \"placaComando\": \"LLL44D\", \"salidaComando\": null, \"tipoIdComando\": 1, \"totalComando\": 0}";
 	
 	@Test
 	public void crearRegistroVehiculoTest() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.post("/estacionamiento")
+		mvc.perform(MockMvcRequestBuilders.post("/estacionamiento/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(JSON_REGISTRO_VEHICULO))
 				.andExpect(MockMvcResultMatchers.status().isOk());

@@ -10,15 +10,15 @@ import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
 
 public interface RepositorioRegistroVehiculoJPA extends CrudRepository<RegistroVehiculoEntity, Integer>{
 
-    @Query("SELECT CASE WHEN COUNT(rv.id) > 0 THEN true ELSE false END FROM RegistroVehiculoEntity rv join rv.vehiculo v WHERE v.placa = :placa AND v.tipoId = :tipoId")
-    public boolean existe(@Param("placa") String placa, @Param("tipoId") long tipoId);
+    @Query("SELECT CASE WHEN COUNT(rv.id) > 0 THEN true ELSE false END FROM RegistroVehiculoEntity rv WHERE rv.placa = :placa AND rv.tipo_id = :tipoId")
+    public boolean existe(@Param("placa") String placa, @Param("tipoId") int tipoId);
     
-    @Query("SELECT COUNT(rv.id) FROM RegistroVehiculoEntity rv inner join rv.vehiculo v WHERE v.tipo = :tipo AND rv.salida is null")
-    public int validarCuposPorTipoVehiculo(@Param("tipo") String tipo);
+    @Query("SELECT COUNT(rv.id) FROM RegistroVehiculoEntity rv WHERE rv.tipo_id = :tipo AND rv.salida is null")
+    public int validarCuposPorTipoVehiculo(@Param("tipo") int tipo);
 
-    @Query("SELECT rv FROM RegistroVehiculoEntity rv join rv.vehiculo v WHERE v.placa = :placa AND rv.salida is null AND rv.total = 0")
+    @Query("SELECT rv FROM RegistroVehiculoEntity rv WHERE rv.placa = :placa AND rv.salida is null AND rv.total = 0")
     public RegistroVehiculoEntity obtenerRegistroVehiculoPorPlaca(@Param("placa") String placa);
     
-    @Query("SELECT rv FROM RegistroVehiculoEntity rv join rv.vehiculo v WHERE rv.salida is null AND rv.total = 0")
+    @Query("SELECT rv FROM RegistroVehiculoEntity rv WHERE rv.salida is null AND rv.total = 0")
     public List<RegistroVehiculoEntity> mostrar();
 }

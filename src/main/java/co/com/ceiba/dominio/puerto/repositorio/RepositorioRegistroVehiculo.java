@@ -23,7 +23,7 @@ public interface RepositorioRegistroVehiculo {
 	 * @param vehiculo
 	 * @return si existe o no
 	 */
-	boolean existe(String placa, long tipoId);
+	boolean existe(String placa, int tipoId);
 	
 	/**
 	 * Permite obtener un registro de vehiculo a tráves de si placa
@@ -37,7 +37,7 @@ public interface RepositorioRegistroVehiculo {
 	 * @param vehiculo
 	 * @return si hay cupo o no
 	 */
-	int validarCuposPorTipoVehiculo(String tipo);
+	int validarCuposPorTipoVehiculo(int tipo);
 	
 	/**
 	 * Permite determinar si hay para un tipo de vehiculo
