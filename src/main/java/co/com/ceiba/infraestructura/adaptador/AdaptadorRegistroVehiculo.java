@@ -1,17 +1,13 @@
 package co.com.ceiba.infraestructura.adaptador;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.dominio.modelo.entidad.RegistroVehiculo;
 import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
 import co.com.ceiba.infraestructura.adaptador.mapper.MapperRegistroVehiculo;
 import co.com.ceiba.infraestructura.adaptador.repositorio.RepositorioRegistroVehiculoJPA;
-import net.bytebuddy.description.type.TypeDescription.Generic.Visitor.Reifying;
 import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
 
 @Repository

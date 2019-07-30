@@ -10,9 +10,9 @@ import co.com.ceiba.dominio.puerto.repositorio.RepositorioRegistroVehiculo;
 
 public class ServicioCrearRegistroVehiculo {
 
-	public static final String EL_VEHICULO_YA_ESTA_ESTACIONADO = "El vehiculo ya está en el estacionamiento";
+	public static final String EL_VEHICULO_YA_ESTA_ESTACIONADO = "El vehiculo ya esta en el estacionamiento";
 	public static final String LO_SENTIMOS_NO_HAY_CUPOS = "Lo sentimos, no hay cupos en el estacionamiento";
-	public static final String ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA = "Lo sentimos, este vehiculo tiene restricción para entrar el día de hoy";
+	public static final String ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA = "Lo sentimos, este vehiculo tiene restriccion para entrar el dia de hoy";
 	private static final long CANTIDAD_MAXIMA_CARROS = 20;
 	private static final long CANTIDAD_MAXIMA_MOTOS = 10;
 	private static final long CARRO = 0;

@@ -13,7 +13,7 @@ public class ServicioActualizarRegistroVehiculo {
 
 	public static final String EL_VEHICULO_NO_ESTA_PARQUEADO = "El vehiculo no esta en el estacionamiento";
 	public static final String LO_SENTIMOS_NO_HAY_CUPOS = "Lo sentimos, no hay cupos en el estacionamiento";
-	public static final String ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA = "Lo sentimos, este vehiculo tiene restricción para entrar el día de hoy";
+	public static final String ESTE_VELICULO_TIENE_RESTRICCION_DE_PLACA = "Lo sentimos, vehiculos con placas que inician con A solo ingresan domingos y lunes.";
 	private static final long MOTO = 1;
 	private static final long CARRO = 0;
 	public static final int VALOR_HORA_CARRO = 1000;

@@ -10,10 +10,10 @@ import co.com.ceiba.infraestructura.adaptador.entidad.RegistroVehiculoEntity;
 
 public interface RepositorioRegistroVehiculoJPA extends CrudRepository<RegistroVehiculoEntity, Integer>{
 
-    @Query("SELECT CASE WHEN COUNT(rv.id) > 0 THEN true ELSE false END FROM RegistroVehiculoEntity rv WHERE rv.placa = :placa AND rv.tipo_id = :tipoId")
-    public boolean existe(@Param("placa") String placa, @Param("tipoId") int tipoId);
+    @Query("SELECT CASE WHEN COUNT(rv.id) > 0 THEN true ELSE false END FROM RegistroVehiculoEntity rv WHERE rv.placa = :placa AND rv.tipoid = :tipoid AND rv.salida is null")
+    public boolean existe(@Param("placa") String placa, @Param("tipoid") int tipoId);
     
-    @Query("SELECT COUNT(rv.id) FROM RegistroVehiculoEntity rv WHERE rv.tipo_id = :tipo AND rv.salida is null")
+    @Query("SELECT COUNT(rv.id) FROM RegistroVehiculoEntity rv WHERE rv.tipoid = :tipo AND rv.salida is null")
     public int validarCuposPorTipoVehiculo(@Param("tipo") int tipo);
 
     @Query("SELECT rv FROM RegistroVehiculoEntity rv WHERE rv.placa = :placa AND rv.salida is null AND rv.total = 0")

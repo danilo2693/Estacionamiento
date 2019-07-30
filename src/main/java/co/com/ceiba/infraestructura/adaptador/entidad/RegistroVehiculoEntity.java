@@ -20,7 +20,7 @@ public class RegistroVehiculoEntity {
 	String placa;
 	
 	@Column(name = "tipo_id")
-	int tipo_id;
+	int tipoid;
 	
 	@Column(name = "cilindraje")
 	int cilindraje;
@@ -40,7 +40,7 @@ public class RegistroVehiculoEntity {
 			double total) {
 		this.id = id;
 		this.placa = placa;
-		this.tipo_id = tipoId;
+		this.tipoid = tipoId;
 		this.cilindraje = cilindraje;
 		this.entrada = entrada;
 		this.salida = salida;
@@ -56,7 +56,7 @@ public class RegistroVehiculoEntity {
 	}
 
 	public int getTipoId() {
-		return tipo_id;
+		return tipoid;
 	}
 
 	public int getCilindraje() {
